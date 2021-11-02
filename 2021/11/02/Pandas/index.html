@@ -1,5 +1,4364 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Pandas - godenblog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="godenblog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="godenblog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Pandas"><meta property="og:url" content="https://kimgoden.github.io/2021/11/02/Pandas/"><meta property="og:site_name" content="godenblog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://kimgoden.github.io/img/og_image.png"><meta property="article:published_time" content="2021-11-02T08:34:51.000Z"><meta property="article:modified_time" content="2021-11-02T08:34:51.853Z"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://kimgoden.github.io/2021/11/02/Pandas/"},"headline":"Pandas","image":["https://kimgoden.github.io/img/og_image.png"],"datePublished":"2021-11-02T08:34:51.000Z","dateModified":"2021-11-02T08:34:51.853Z","author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"godenblog","logo":{"@type":"ImageObject","url":"https://kimgoden.github.io/img/logo.svg"}},"description":""}</script><link rel="canonical" href="https://kimgoden.github.io/2021/11/02/Pandas/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="godenblog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-02T08:34:51.000Z" title="2021. 11. 2. 오후 5:34:51">2021-11-02</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-02T08:34:51.853Z" title="2021. 11. 2. 오후 5:34:51">2021-11-02</time></span><span class="level-item">a few seconds read (About 0 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">Pandas</h1><div class="content"></div><div class="article-licensing box"><div class="licensing-title"><p>Pandas</p><p><a href="https://kimgoden.github.io/2021/11/02/Pandas/">https://kimgoden.github.io/2021/11/02/Pandas/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>John Doe</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-11-02</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2021-11-02</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/" alt="Alipay"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="/" alt="Wechat"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/11/02/Python01/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Python01</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/11/02/numpy/"><span class="level-item">numpy</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-02T08:37:10.000Z">2021-11-02</time></p><p class="title"><a href="/2021/11/02/Colab-github/">Colab-github</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-02T08:35:53.000Z">2021-11-02</time></p><p class="title"><a href="/2021/11/02/Statistics-Capter03/">Statistics-Capter03</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-02T08:35:42.000Z">2021-11-02</time></p><p class="title"><a href="/2021/11/02/Statistics-Capter02/">Statistics-Capter02</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-02T08:35:30.000Z">2021-11-02</time></p><p class="title"><a href="/2021/11/02/Statistics-Capter01/">Statistics-Capter01</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-02T08:35:04.000Z">2021-11-02</time></p><p class="title"><a href="/2021/11/02/Python01/">Python01</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">November 2021</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="godenblog" height="28"></a><p class="is-size-7"><span>&copy; 2021 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Pandas - godenblog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="godenblog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="godenblog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Pandas 사용123import pandas as pdprint(pd.__version__)# pandas 사용환경 설정  1.1.5  1import numpy as np  테스트12df &amp;#x3D; pd.DataFrame(&amp;amp;#123;&amp;amp;#x27;col1&amp;amp;#x27;: [1, 2], &amp;amp;#x27;col2&amp;amp;#x27;: [3, 4]&amp;amp;#125;)print(type(df))"><meta property="og:type" content="blog"><meta property="og:title" content="Pandas"><meta property="og:url" content="https://kimgoden.github.io/2021/11/02/Pandas/"><meta property="og:site_name" content="godenblog"><meta property="og:description" content="Pandas 사용123import pandas as pdprint(pd.__version__)# pandas 사용환경 설정  1.1.5  1import numpy as np  테스트12df &amp;#x3D; pd.DataFrame(&amp;amp;#123;&amp;amp;#x27;col1&amp;amp;#x27;: [1, 2], &amp;amp;#x27;col2&amp;amp;#x27;: [3, 4]&amp;amp;#125;)print(type(df))"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://kimgoden.github.io/img/og_image.png"><meta property="article:published_time" content="2021-11-02T08:34:51.000Z"><meta property="article:modified_time" content="2021-11-02T08:41:22.450Z"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://kimgoden.github.io/2021/11/02/Pandas/"},"headline":"Pandas","image":["https://kimgoden.github.io/img/og_image.png"],"datePublished":"2021-11-02T08:34:51.000Z","dateModified":"2021-11-02T08:41:22.450Z","author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"godenblog","logo":{"@type":"ImageObject","url":"https://kimgoden.github.io/img/logo.svg"}},"description":"Pandas 사용123import pandas as pdprint(pd.__version__)# pandas 사용환경 설정  1.1.5  1import numpy as np  테스트12df &#x3D; pd.DataFrame(&amp;#123;&amp;#x27;col1&amp;#x27;: [1, 2], &amp;#x27;col2&amp;#x27;: [3, 4]&amp;#125;)print(type(df))"}</script><link rel="canonical" href="https://kimgoden.github.io/2021/11/02/Pandas/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="godenblog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-02T08:34:51.000Z" title="2021. 11. 2. 오후 5:34:51">2021-11-02</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-02T08:41:22.450Z" title="2021. 11. 2. 오후 5:41:22">2021-11-02</time></span><span class="level-item">21 minutes read (About 3129 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">Pandas</h1><div class="content"><h1 id="Pandas-사용"><a href="#Pandas-사용" class="headerlink" title="Pandas 사용"></a>Pandas 사용</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="built_in">print</span>(pd.__version__)</span><br><span class="line"><span class="comment"># pandas 사용환경 설정</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>1.1.5
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+
+<h1 id="테스트"><a href="#테스트" class="headerlink" title="테스트"></a>테스트</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;col1&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>], <span class="string">&#x27;col2&#x27;</span>: [<span class="number">3</span>, <span class="number">4</span>]&#125;)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(df))</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+</code></pre>
+<h1 id="구글-드라이브와-연동"><a href="#구글-드라이브와-연동" class="headerlink" title="구글 드라이브와 연동"></a>구글 드라이브와 연동</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> google.colab <span class="keyword">import</span> drive</span><br><span class="line">drive.mount(<span class="string">&#x27;/content/drive&#x27;</span>)</span><br><span class="line"><span class="comment"># 구글 드라이브와 colab을 연동하여 드라이브의 파일을 가져올 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>Mounted at /content/drive
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">DATA_PATH = <span class="string">&quot;경로를 입력하시기를 바랍니다.&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DATA_PATH = <span class="string">&#x27;/content/drive/MyDrive/lectures_210923/PART_I_Intro/&#x27;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string"> 파일을 불러올 때는 경로를 잘 확인하여야 한다.</span></span><br><span class="line"><span class="string"> 이 형식처럼 경로를 나눠저 적어도 되지만</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> DATA_PATH = &#x27;/content/drive/MyDrive/lectures_210923/PART_I_Intro/data/Lemonade2016.csv&#x27;</span></span><br><span class="line"><span class="string"> lemonade = pd.read_csv(DATA_PATH)</span></span><br><span class="line"><span class="string"> 위의 형식처럼 작성해도 된다.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">lemonade = pd.read_csv(DATA_PATH + <span class="string">&#x27;data/Lemonade2016.csv&#x27;</span>)</span><br><span class="line">lemonade.info()</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 32 entries, 0 to 31
+Data columns (total 7 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   Date         31 non-null     object 
+ 1   Location     32 non-null     object 
+ 2   Lemon        32 non-null     int64  
+ 3   Orange       32 non-null     int64  
+ 4   Temperature  32 non-null     int64  
+ 5   Leaflets     31 non-null     float64
+ 6   Price        32 non-null     float64
+dtypes: float64(2), int64(3), object(2)
+memory usage: 1.9+ KB
+</code></pre>
+ <span id="more"></span>
+
+<h1 id="데이터-확인하기"><a href="#데이터-확인하기" class="headerlink" title="데이터 확인하기"></a>데이터 확인하기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lemonade.head(<span class="number">5</span>)</span><br><span class="line"><span class="comment"># 데이터프레임의 상단 5개 데이터를 불러온다.</span></span><br><span class="line"><span class="comment"># lemonade.head() =&gt; 이렇게 공백으로 넣을 경우 기본값이 5로 되어 있다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Lemon</th>
+      <th>Orange</th>
+      <th>Temperature</th>
+      <th>Leaflets</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7/1/2016</td>
+      <td>Park</td>
+      <td>97</td>
+      <td>67</td>
+      <td>70</td>
+      <td>90.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7/2/2016</td>
+      <td>Park</td>
+      <td>98</td>
+      <td>67</td>
+      <td>72</td>
+      <td>90.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7/3/2016</td>
+      <td>Park</td>
+      <td>110</td>
+      <td>77</td>
+      <td>71</td>
+      <td>104.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7/4/2016</td>
+      <td>Beach</td>
+      <td>134</td>
+      <td>99</td>
+      <td>76</td>
+      <td>98.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7/5/2016</td>
+      <td>Beach</td>
+      <td>159</td>
+      <td>118</td>
+      <td>78</td>
+      <td>135.0</td>
+      <td>0.25</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lemonade.tail(<span class="number">5</span>)</span><br><span class="line"><span class="comment"># 데이터프레임의 하단 5개 데이터를 불러온다.</span></span><br><span class="line"><span class="comment"># lemonade.tail() =&gt; 이렇게 공백으로 넣을 경우 기본값이 5로 되어 있다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Lemon</th>
+      <th>Orange</th>
+      <th>Temperature</th>
+      <th>Leaflets</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>27</th>
+      <td>7/27/2016</td>
+      <td>Park</td>
+      <td>104</td>
+      <td>68</td>
+      <td>80</td>
+      <td>99.0</td>
+      <td>0.35</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>7/28/2016</td>
+      <td>Park</td>
+      <td>96</td>
+      <td>63</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.35</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>7/29/2016</td>
+      <td>Park</td>
+      <td>100</td>
+      <td>66</td>
+      <td>81</td>
+      <td>95.0</td>
+      <td>0.35</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>7/30/2016</td>
+      <td>Beach</td>
+      <td>88</td>
+      <td>57</td>
+      <td>82</td>
+      <td>81.0</td>
+      <td>0.35</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>7/31/2016</td>
+      <td>Beach</td>
+      <td>76</td>
+      <td>47</td>
+      <td>82</td>
+      <td>68.0</td>
+      <td>0.35</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lemonade.info())</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">데이터 셋의 정보를 볼 수 있다.</span></span><br><span class="line"><span class="string">데이터 셋 행은 총 31, 열은 7 개로 구성되어져 있다.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="built_in">print</span>(lemonade.index)</span><br><span class="line"><span class="comment"># 데이터프레임의 인덱스 확인</span></span><br><span class="line"><span class="built_in">print</span>(lemonade.columns)</span><br><span class="line"><span class="comment"># 데이터프레임의 컬럼(행)을 확인 할 수 있다.</span></span><br><span class="line"><span class="built_in">print</span>(lemonade.values)</span><br><span class="line"><span class="comment"># numpy 데이터의 값을 확인 할 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 32 entries, 0 to 31
+Data columns (total 7 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   Date         31 non-null     object 
+ 1   Location     32 non-null     object 
+ 2   Lemon        32 non-null     int64  
+ 3   Orange       32 non-null     int64  
+ 4   Temperature  32 non-null     int64  
+ 5   Leaflets     31 non-null     float64
+ 6   Price        32 non-null     float64
+dtypes: float64(2), int64(3), object(2)
+memory usage: 1.9+ KB
+None
+RangeIndex(start=0, stop=32, step=1)
+Index([&#39;Date&#39;, &#39;Location&#39;, &#39;Lemon&#39;, &#39;Orange&#39;, &#39;Temperature&#39;, &#39;Leaflets&#39;,
+       &#39;Price&#39;],
+      dtype=&#39;object&#39;)
+[[&#39;7/1/2016&#39; &#39;Park&#39; 97 67 70 90.0 0.25]
+ [&#39;7/2/2016&#39; &#39;Park&#39; 98 67 72 90.0 0.25]
+ [&#39;7/3/2016&#39; &#39;Park&#39; 110 77 71 104.0 0.25]
+ [&#39;7/4/2016&#39; &#39;Beach&#39; 134 99 76 98.0 0.25]
+ [&#39;7/5/2016&#39; &#39;Beach&#39; 159 118 78 135.0 0.25]
+ [&#39;7/6/2016&#39; &#39;Beach&#39; 103 69 82 90.0 0.25]
+ [&#39;7/6/2016&#39; &#39;Beach&#39; 103 69 82 90.0 0.25]
+ [&#39;7/7/2016&#39; &#39;Beach&#39; 143 101 81 135.0 0.25]
+ [nan &#39;Beach&#39; 123 86 82 113.0 0.25]
+ [&#39;7/9/2016&#39; &#39;Beach&#39; 134 95 80 126.0 0.25]
+ [&#39;7/10/2016&#39; &#39;Beach&#39; 140 98 82 131.0 0.25]
+ [&#39;7/11/2016&#39; &#39;Beach&#39; 162 120 83 135.0 0.25]
+ [&#39;7/12/2016&#39; &#39;Beach&#39; 130 95 84 99.0 0.25]
+ [&#39;7/13/2016&#39; &#39;Beach&#39; 109 75 77 99.0 0.25]
+ [&#39;7/14/2016&#39; &#39;Beach&#39; 122 85 78 113.0 0.25]
+ [&#39;7/15/2016&#39; &#39;Beach&#39; 98 62 75 108.0 0.5]
+ [&#39;7/16/2016&#39; &#39;Beach&#39; 81 50 74 90.0 0.5]
+ [&#39;7/17/2016&#39; &#39;Beach&#39; 115 76 77 126.0 0.5]
+ [&#39;7/18/2016&#39; &#39;Park&#39; 131 92 81 122.0 0.5]
+ [&#39;7/19/2016&#39; &#39;Park&#39; 122 85 78 113.0 0.5]
+ [&#39;7/20/2016&#39; &#39;Park&#39; 71 42 70 nan 0.5]
+ [&#39;7/21/2016&#39; &#39;Park&#39; 83 50 77 90.0 0.5]
+ [&#39;7/22/2016&#39; &#39;Park&#39; 112 75 80 108.0 0.5]
+ [&#39;7/23/2016&#39; &#39;Park&#39; 120 82 81 117.0 0.5]
+ [&#39;7/24/2016&#39; &#39;Park&#39; 121 82 82 117.0 0.5]
+ [&#39;7/25/2016&#39; &#39;Park&#39; 156 113 84 135.0 0.5]
+ [&#39;7/26/2016&#39; &#39;Park&#39; 176 129 83 158.0 0.35]
+ [&#39;7/27/2016&#39; &#39;Park&#39; 104 68 80 99.0 0.35]
+ [&#39;7/28/2016&#39; &#39;Park&#39; 96 63 82 90.0 0.35]
+ [&#39;7/29/2016&#39; &#39;Park&#39; 100 66 81 95.0 0.35]
+ [&#39;7/30/2016&#39; &#39;Beach&#39; 88 57 82 81.0 0.35]
+ [&#39;7/31/2016&#39; &#39;Beach&#39; 76 47 82 68.0 0.35]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">lemonade.describe()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 간단한 통계 정보를 보여주는 메서드다.</span></span><br><span class="line"><span class="comment"># count : 컬럼별 데이터의 개수</span></span><br><span class="line"><span class="comment"># mean : 데이터의 평균값</span></span><br><span class="line"><span class="comment"># std : 표준편차</span></span><br><span class="line"><span class="comment"># min : 최솟값</span></span><br><span class="line"><span class="comment"># 25%, 50%, 75% ; 4분위 수</span></span><br><span class="line"><span class="comment"># max : 최댓값</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Lemon</th>
+      <th>Orange</th>
+      <th>Temperature</th>
+      <th>Leaflets</th>
+      <th>Price</th>
+      <th>Sold</th>
+      <th>Revenue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>32.000000</td>
+      <td>32.000000</td>
+      <td>32.000000</td>
+      <td>31.000000</td>
+      <td>32.000000</td>
+      <td>32.000000</td>
+      <td>32.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>116.156250</td>
+      <td>80.000000</td>
+      <td>78.968750</td>
+      <td>108.548387</td>
+      <td>0.354687</td>
+      <td>196.156250</td>
+      <td>68.156250</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>25.823357</td>
+      <td>21.863211</td>
+      <td>4.067847</td>
+      <td>20.117718</td>
+      <td>0.113137</td>
+      <td>47.647976</td>
+      <td>24.645531</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>71.000000</td>
+      <td>42.000000</td>
+      <td>70.000000</td>
+      <td>68.000000</td>
+      <td>0.250000</td>
+      <td>113.000000</td>
+      <td>41.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>98.000000</td>
+      <td>66.750000</td>
+      <td>77.000000</td>
+      <td>90.000000</td>
+      <td>0.250000</td>
+      <td>164.750000</td>
+      <td>51.500000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>113.500000</td>
+      <td>76.500000</td>
+      <td>80.500000</td>
+      <td>108.000000</td>
+      <td>0.350000</td>
+      <td>189.000000</td>
+      <td>58.875000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>131.750000</td>
+      <td>95.000000</td>
+      <td>82.000000</td>
+      <td>124.000000</td>
+      <td>0.500000</td>
+      <td>226.000000</td>
+      <td>83.375000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>176.000000</td>
+      <td>129.000000</td>
+      <td>84.000000</td>
+      <td>158.000000</td>
+      <td>0.500000</td>
+      <td>305.000000</td>
+      <td>134.500000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lemonade.T</span><br><span class="line"><span class="comment"># 데이터 프레임에서 인덱스와 컬럼을 바꾼형태 입니다.</span></span><br><span class="line"><span class="comment"># 이때 주의할 점은 .T는 메서드가 아니기 때문에 .T() 형태로 사용하지 않습니다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+      <th>14</th>
+      <th>15</th>
+      <th>16</th>
+      <th>17</th>
+      <th>18</th>
+      <th>19</th>
+      <th>20</th>
+      <th>21</th>
+      <th>22</th>
+      <th>23</th>
+      <th>24</th>
+      <th>25</th>
+      <th>26</th>
+      <th>27</th>
+      <th>28</th>
+      <th>29</th>
+      <th>30</th>
+      <th>31</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Date</th>
+      <td>7/1/2016</td>
+      <td>7/2/2016</td>
+      <td>7/3/2016</td>
+      <td>7/4/2016</td>
+      <td>7/5/2016</td>
+      <td>7/6/2016</td>
+      <td>7/6/2016</td>
+      <td>7/7/2016</td>
+      <td>NaN</td>
+      <td>7/9/2016</td>
+      <td>7/10/2016</td>
+      <td>7/11/2016</td>
+      <td>7/12/2016</td>
+      <td>7/13/2016</td>
+      <td>7/14/2016</td>
+      <td>7/15/2016</td>
+      <td>7/16/2016</td>
+      <td>7/17/2016</td>
+      <td>7/18/2016</td>
+      <td>7/19/2016</td>
+      <td>7/20/2016</td>
+      <td>7/21/2016</td>
+      <td>7/22/2016</td>
+      <td>7/23/2016</td>
+      <td>7/24/2016</td>
+      <td>7/25/2016</td>
+      <td>7/26/2016</td>
+      <td>7/27/2016</td>
+      <td>7/28/2016</td>
+      <td>7/29/2016</td>
+      <td>7/30/2016</td>
+      <td>7/31/2016</td>
+    </tr>
+    <tr>
+      <th>Location</th>
+      <td>Park</td>
+      <td>Park</td>
+      <td>Park</td>
+      <td>Beach</td>
+      <td>Beach</td>
+      <td>Beach</td>
+      <td>Beach</td>
+      <td>Beach</td>
+      <td>Beach</td>
+      <td>Beach</td>
+      <td>Beach</td>
+      <td>Beach</td>
+      <td>Beach</td>
+      <td>Beach</td>
+      <td>Beach</td>
+      <td>Beach</td>
+      <td>Beach</td>
+      <td>Beach</td>
+      <td>Park</td>
+      <td>Park</td>
+      <td>Park</td>
+      <td>Park</td>
+      <td>Park</td>
+      <td>Park</td>
+      <td>Park</td>
+      <td>Park</td>
+      <td>Park</td>
+      <td>Park</td>
+      <td>Park</td>
+      <td>Park</td>
+      <td>Beach</td>
+      <td>Beach</td>
+    </tr>
+    <tr>
+      <th>Lemon</th>
+      <td>97</td>
+      <td>98</td>
+      <td>110</td>
+      <td>134</td>
+      <td>159</td>
+      <td>103</td>
+      <td>103</td>
+      <td>143</td>
+      <td>123</td>
+      <td>134</td>
+      <td>140</td>
+      <td>162</td>
+      <td>130</td>
+      <td>109</td>
+      <td>122</td>
+      <td>98</td>
+      <td>81</td>
+      <td>115</td>
+      <td>131</td>
+      <td>122</td>
+      <td>71</td>
+      <td>83</td>
+      <td>112</td>
+      <td>120</td>
+      <td>121</td>
+      <td>156</td>
+      <td>176</td>
+      <td>104</td>
+      <td>96</td>
+      <td>100</td>
+      <td>88</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>Orange</th>
+      <td>67</td>
+      <td>67</td>
+      <td>77</td>
+      <td>99</td>
+      <td>118</td>
+      <td>69</td>
+      <td>69</td>
+      <td>101</td>
+      <td>86</td>
+      <td>95</td>
+      <td>98</td>
+      <td>120</td>
+      <td>95</td>
+      <td>75</td>
+      <td>85</td>
+      <td>62</td>
+      <td>50</td>
+      <td>76</td>
+      <td>92</td>
+      <td>85</td>
+      <td>42</td>
+      <td>50</td>
+      <td>75</td>
+      <td>82</td>
+      <td>82</td>
+      <td>113</td>
+      <td>129</td>
+      <td>68</td>
+      <td>63</td>
+      <td>66</td>
+      <td>57</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>Temperature</th>
+      <td>70</td>
+      <td>72</td>
+      <td>71</td>
+      <td>76</td>
+      <td>78</td>
+      <td>82</td>
+      <td>82</td>
+      <td>81</td>
+      <td>82</td>
+      <td>80</td>
+      <td>82</td>
+      <td>83</td>
+      <td>84</td>
+      <td>77</td>
+      <td>78</td>
+      <td>75</td>
+      <td>74</td>
+      <td>77</td>
+      <td>81</td>
+      <td>78</td>
+      <td>70</td>
+      <td>77</td>
+      <td>80</td>
+      <td>81</td>
+      <td>82</td>
+      <td>84</td>
+      <td>83</td>
+      <td>80</td>
+      <td>82</td>
+      <td>81</td>
+      <td>82</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>Leaflets</th>
+      <td>90</td>
+      <td>90</td>
+      <td>104</td>
+      <td>98</td>
+      <td>135</td>
+      <td>90</td>
+      <td>90</td>
+      <td>135</td>
+      <td>113</td>
+      <td>126</td>
+      <td>131</td>
+      <td>135</td>
+      <td>99</td>
+      <td>99</td>
+      <td>113</td>
+      <td>108</td>
+      <td>90</td>
+      <td>126</td>
+      <td>122</td>
+      <td>113</td>
+      <td>NaN</td>
+      <td>90</td>
+      <td>108</td>
+      <td>117</td>
+      <td>117</td>
+      <td>135</td>
+      <td>158</td>
+      <td>99</td>
+      <td>90</td>
+      <td>95</td>
+      <td>81</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>Price</th>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>0.35</td>
+      <td>0.35</td>
+      <td>0.35</td>
+      <td>0.35</td>
+      <td>0.35</td>
+      <td>0.35</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">lemonade.sort_index(axis=<span class="number">0</span>, ascending=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># .sort_index() 메소드는 행과 열 이름을 정렬해준다.</span></span><br><span class="line"><span class="comment"># 정렬 축을 설정할때는 axis를 사용한다</span></span><br><span class="line"><span class="comment"># axis=0 : 인덱스를 기준</span></span><br><span class="line"><span class="comment"># axis=1 : 컬럼을 기준</span></span><br><span class="line"><span class="comment"># ascending은 정렬의 방향을 설정해준다.</span></span><br><span class="line"><span class="comment"># ascending=True : 오름차순(기본값)</span></span><br><span class="line"><span class="comment"># ascending=False : 내림차순</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Lemon</th>
+      <th>Orange</th>
+      <th>Temperature</th>
+      <th>Leaflets</th>
+      <th>Price</th>
+      <th>Sold</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7/1/2016</td>
+      <td>Park</td>
+      <td>97</td>
+      <td>67</td>
+      <td>70</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7/2/2016</td>
+      <td>Park</td>
+      <td>98</td>
+      <td>67</td>
+      <td>72</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7/3/2016</td>
+      <td>Park</td>
+      <td>110</td>
+      <td>77</td>
+      <td>71</td>
+      <td>104.0</td>
+      <td>0.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7/4/2016</td>
+      <td>Beach</td>
+      <td>134</td>
+      <td>99</td>
+      <td>76</td>
+      <td>98.0</td>
+      <td>0.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7/5/2016</td>
+      <td>Beach</td>
+      <td>159</td>
+      <td>118</td>
+      <td>78</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7/6/2016</td>
+      <td>Beach</td>
+      <td>103</td>
+      <td>69</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7/6/2016</td>
+      <td>Beach</td>
+      <td>103</td>
+      <td>69</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7/7/2016</td>
+      <td>Beach</td>
+      <td>143</td>
+      <td>101</td>
+      <td>81</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>NaN</td>
+      <td>Beach</td>
+      <td>123</td>
+      <td>86</td>
+      <td>82</td>
+      <td>113.0</td>
+      <td>0.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>7/9/2016</td>
+      <td>Beach</td>
+      <td>134</td>
+      <td>95</td>
+      <td>80</td>
+      <td>126.0</td>
+      <td>0.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>7/10/2016</td>
+      <td>Beach</td>
+      <td>140</td>
+      <td>98</td>
+      <td>82</td>
+      <td>131.0</td>
+      <td>0.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>7/11/2016</td>
+      <td>Beach</td>
+      <td>162</td>
+      <td>120</td>
+      <td>83</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>7/12/2016</td>
+      <td>Beach</td>
+      <td>130</td>
+      <td>95</td>
+      <td>84</td>
+      <td>99.0</td>
+      <td>0.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>7/13/2016</td>
+      <td>Beach</td>
+      <td>109</td>
+      <td>75</td>
+      <td>77</td>
+      <td>99.0</td>
+      <td>0.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>7/14/2016</td>
+      <td>Beach</td>
+      <td>122</td>
+      <td>85</td>
+      <td>78</td>
+      <td>113.0</td>
+      <td>0.25</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>7/15/2016</td>
+      <td>Beach</td>
+      <td>98</td>
+      <td>62</td>
+      <td>75</td>
+      <td>108.0</td>
+      <td>0.50</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>7/16/2016</td>
+      <td>Beach</td>
+      <td>81</td>
+      <td>50</td>
+      <td>74</td>
+      <td>90.0</td>
+      <td>0.50</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>7/17/2016</td>
+      <td>Beach</td>
+      <td>115</td>
+      <td>76</td>
+      <td>77</td>
+      <td>126.0</td>
+      <td>0.50</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>7/18/2016</td>
+      <td>Park</td>
+      <td>131</td>
+      <td>92</td>
+      <td>81</td>
+      <td>122.0</td>
+      <td>0.50</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>7/19/2016</td>
+      <td>Park</td>
+      <td>122</td>
+      <td>85</td>
+      <td>78</td>
+      <td>113.0</td>
+      <td>0.50</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>7/20/2016</td>
+      <td>Park</td>
+      <td>71</td>
+      <td>42</td>
+      <td>70</td>
+      <td>NaN</td>
+      <td>0.50</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>7/21/2016</td>
+      <td>Park</td>
+      <td>83</td>
+      <td>50</td>
+      <td>77</td>
+      <td>90.0</td>
+      <td>0.50</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>7/22/2016</td>
+      <td>Park</td>
+      <td>112</td>
+      <td>75</td>
+      <td>80</td>
+      <td>108.0</td>
+      <td>0.50</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>7/23/2016</td>
+      <td>Park</td>
+      <td>120</td>
+      <td>82</td>
+      <td>81</td>
+      <td>117.0</td>
+      <td>0.50</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>7/24/2016</td>
+      <td>Park</td>
+      <td>121</td>
+      <td>82</td>
+      <td>82</td>
+      <td>117.0</td>
+      <td>0.50</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>7/25/2016</td>
+      <td>Park</td>
+      <td>156</td>
+      <td>113</td>
+      <td>84</td>
+      <td>135.0</td>
+      <td>0.50</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>7/26/2016</td>
+      <td>Park</td>
+      <td>176</td>
+      <td>129</td>
+      <td>83</td>
+      <td>158.0</td>
+      <td>0.35</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>7/27/2016</td>
+      <td>Park</td>
+      <td>104</td>
+      <td>68</td>
+      <td>80</td>
+      <td>99.0</td>
+      <td>0.35</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>7/28/2016</td>
+      <td>Park</td>
+      <td>96</td>
+      <td>63</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.35</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>7/29/2016</td>
+      <td>Park</td>
+      <td>100</td>
+      <td>66</td>
+      <td>81</td>
+      <td>95.0</td>
+      <td>0.35</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>7/30/2016</td>
+      <td>Beach</td>
+      <td>88</td>
+      <td>57</td>
+      <td>82</td>
+      <td>81.0</td>
+      <td>0.35</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>7/31/2016</td>
+      <td>Beach</td>
+      <td>76</td>
+      <td>47</td>
+      <td>82</td>
+      <td>68.0</td>
+      <td>0.35</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lemonade.sort_values(by=<span class="string">&#x27;Location&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 프레임의 내부에 있는 값으로 정렬할 수 있다.</span></span><br><span class="line"><span class="comment"># 예시의 경우 Location을 기준으로 했다.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Lemon</th>
+      <th>Orange</th>
+      <th>Temperature</th>
+      <th>Leaflets</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>15</th>
+      <td>7/15/2016</td>
+      <td>Beach</td>
+      <td>98</td>
+      <td>62</td>
+      <td>75</td>
+      <td>108.0</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>7/17/2016</td>
+      <td>Beach</td>
+      <td>115</td>
+      <td>76</td>
+      <td>77</td>
+      <td>126.0</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>7/16/2016</td>
+      <td>Beach</td>
+      <td>81</td>
+      <td>50</td>
+      <td>74</td>
+      <td>90.0</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>7/30/2016</td>
+      <td>Beach</td>
+      <td>88</td>
+      <td>57</td>
+      <td>82</td>
+      <td>81.0</td>
+      <td>0.35</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>7/14/2016</td>
+      <td>Beach</td>
+      <td>122</td>
+      <td>85</td>
+      <td>78</td>
+      <td>113.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>7/13/2016</td>
+      <td>Beach</td>
+      <td>109</td>
+      <td>75</td>
+      <td>77</td>
+      <td>99.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>7/12/2016</td>
+      <td>Beach</td>
+      <td>130</td>
+      <td>95</td>
+      <td>84</td>
+      <td>99.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>7/11/2016</td>
+      <td>Beach</td>
+      <td>162</td>
+      <td>120</td>
+      <td>83</td>
+      <td>135.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>7/10/2016</td>
+      <td>Beach</td>
+      <td>140</td>
+      <td>98</td>
+      <td>82</td>
+      <td>131.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>7/31/2016</td>
+      <td>Beach</td>
+      <td>76</td>
+      <td>47</td>
+      <td>82</td>
+      <td>68.0</td>
+      <td>0.35</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>NaN</td>
+      <td>Beach</td>
+      <td>123</td>
+      <td>86</td>
+      <td>82</td>
+      <td>113.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7/7/2016</td>
+      <td>Beach</td>
+      <td>143</td>
+      <td>101</td>
+      <td>81</td>
+      <td>135.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7/6/2016</td>
+      <td>Beach</td>
+      <td>103</td>
+      <td>69</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7/6/2016</td>
+      <td>Beach</td>
+      <td>103</td>
+      <td>69</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7/5/2016</td>
+      <td>Beach</td>
+      <td>159</td>
+      <td>118</td>
+      <td>78</td>
+      <td>135.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7/4/2016</td>
+      <td>Beach</td>
+      <td>134</td>
+      <td>99</td>
+      <td>76</td>
+      <td>98.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>7/9/2016</td>
+      <td>Beach</td>
+      <td>134</td>
+      <td>95</td>
+      <td>80</td>
+      <td>126.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>7/29/2016</td>
+      <td>Park</td>
+      <td>100</td>
+      <td>66</td>
+      <td>81</td>
+      <td>95.0</td>
+      <td>0.35</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>7/28/2016</td>
+      <td>Park</td>
+      <td>96</td>
+      <td>63</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.35</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>7/27/2016</td>
+      <td>Park</td>
+      <td>104</td>
+      <td>68</td>
+      <td>80</td>
+      <td>99.0</td>
+      <td>0.35</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>7/26/2016</td>
+      <td>Park</td>
+      <td>176</td>
+      <td>129</td>
+      <td>83</td>
+      <td>158.0</td>
+      <td>0.35</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>7/25/2016</td>
+      <td>Park</td>
+      <td>156</td>
+      <td>113</td>
+      <td>84</td>
+      <td>135.0</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>7/24/2016</td>
+      <td>Park</td>
+      <td>121</td>
+      <td>82</td>
+      <td>82</td>
+      <td>117.0</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>7/20/2016</td>
+      <td>Park</td>
+      <td>71</td>
+      <td>42</td>
+      <td>70</td>
+      <td>NaN</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>7/22/2016</td>
+      <td>Park</td>
+      <td>112</td>
+      <td>75</td>
+      <td>80</td>
+      <td>108.0</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>7/21/2016</td>
+      <td>Park</td>
+      <td>83</td>
+      <td>50</td>
+      <td>77</td>
+      <td>90.0</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>7/19/2016</td>
+      <td>Park</td>
+      <td>122</td>
+      <td>85</td>
+      <td>78</td>
+      <td>113.0</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>7/18/2016</td>
+      <td>Park</td>
+      <td>131</td>
+      <td>92</td>
+      <td>81</td>
+      <td>122.0</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7/2/2016</td>
+      <td>Park</td>
+      <td>98</td>
+      <td>67</td>
+      <td>72</td>
+      <td>90.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7/3/2016</td>
+      <td>Park</td>
+      <td>110</td>
+      <td>77</td>
+      <td>71</td>
+      <td>104.0</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>7/23/2016</td>
+      <td>Park</td>
+      <td>120</td>
+      <td>82</td>
+      <td>81</td>
+      <td>117.0</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>7/1/2016</td>
+      <td>Park</td>
+      <td>97</td>
+      <td>67</td>
+      <td>70</td>
+      <td>90.0</td>
+      <td>0.25</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h1 id="데이터-추가-삭제하기"><a href="#데이터-추가-삭제하기" class="headerlink" title="데이터 추가 삭제하기"></a>데이터 추가 삭제하기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lemonade[<span class="string">&#x27;Sold&#x27;</span>] = <span class="number">0</span> </span><br><span class="line"><span class="built_in">print</span>(lemonade.head(<span class="number">3</span>))</span><br><span class="line"><span class="comment">## &#x27;Sold&#x27; 라는 기본값 0의 컬럼을 추가한다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>       Date Location  Lemon  Orange  Temperature  Leaflets  Price  Sold
+0  7/1/2016     Park     97      67           70      90.0   0.25     0
+1  7/2/2016     Park     98      67           72      90.0   0.25     0
+2  7/3/2016     Park    110      77           71     104.0   0.25     0
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lemonade[<span class="string">&#x27;Sold&#x27;</span>] = lemonade[<span class="string">&#x27;Lemon&#x27;</span>] + lemonade[<span class="string">&#x27;Orange&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(lemonade.head(<span class="number">3</span>))</span><br><span class="line"><span class="comment"># &#x27;Sold에 Lemon과 Orange 의 갯수를 합한 데이터를 넣어준다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>       Date Location  Lemon  Orange  Temperature  Leaflets  Price  Sold
+0  7/1/2016     Park     97      67           70      90.0   0.25   164
+1  7/2/2016     Park     98      67           72      90.0   0.25   165
+2  7/3/2016     Park    110      77           71     104.0   0.25   187
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lemonade[<span class="string">&#x27;Revenue&#x27;</span>] = lemonade[<span class="string">&#x27;Price&#x27;</span>] * lemonade[<span class="string">&#x27;Sold&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(lemonade.head(<span class="number">3</span>))</span><br><span class="line"><span class="comment"># 컬럼을 추가하는 과정을 생략할 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>       Date Location  Lemon  Orange  ...  Leaflets  Price  Sold  Revenue
+0  7/1/2016     Park     97      67  ...      90.0   0.25   164    41.00
+1  7/2/2016     Park     98      67  ...      90.0   0.25   165    41.25
+2  7/3/2016     Park    110      77  ...     104.0   0.25   187    46.75
+
+[3 rows x 9 columns]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lemonade_column_drop = lemonade.drop(<span class="string">&#x27;Sold&#x27;</span>, axis=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(lemonade_column_drop.head(<span class="number">3</span>))</span><br><span class="line"></span><br><span class="line">lemonade_row_drop = lemonade_column_drop.drop(<span class="number">0</span>, axis=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(lemonade_row_drop.head(<span class="number">3</span>))</span><br><span class="line"><span class="comment">#.drop을 이용해 추가한 컬럼,인덱스를 삭제할 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>       Date Location  Lemon  Orange  Temperature  Leaflets  Price  Revenue
+0  7/1/2016     Park     97      67           70      90.0   0.25    41.00
+1  7/2/2016     Park     98      67           72      90.0   0.25    41.25
+2  7/3/2016     Park    110      77           71     104.0   0.25    46.75
+       Date Location  Lemon  Orange  Temperature  Leaflets  Price  Revenue
+1  7/2/2016     Park     98      67           72      90.0   0.25    41.25
+2  7/3/2016     Park    110      77           71     104.0   0.25    46.75
+3  7/4/2016    Beach    134      99           76      98.0   0.25    58.25
+</code></pre>
+<h1 id="데이터-인덱싱"><a href="#데이터-인덱싱" class="headerlink" title="데이터 인덱싱"></a>데이터 인덱싱</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lemonade[<span class="number">0</span>:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>       Date Location  Lemon  Orange  Temperature  Leaflets  Price  Sold  \
+0  7/1/2016     Park     97      67           70      90.0   0.25   164   
+1  7/2/2016     Park     98      67           72      90.0   0.25   165   
+2  7/3/2016     Park    110      77           71     104.0   0.25   187   
+3  7/4/2016    Beach    134      99           76      98.0   0.25   233   
+4  7/5/2016    Beach    159     118           78     135.0   0.25   277   
+
+   Revenue  
+0    41.00  
+1    41.25  
+2    46.75  
+3    58.25  
+4    69.25  
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lemonade[<span class="string">&#x27;Location&#x27;</span>] == <span class="string">&#x27;Beach&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 프레임에서 로케이션 컬럼 값이 Beach 일경우 True, 아닐경우 False를 반환</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0     False
+1     False
+2     False
+3      True
+4      True
+5      True
+6      True
+7      True
+8      True
+9      True
+10     True
+11     True
+12     True
+13     True
+14     True
+15     True
+16     True
+17     True
+18    False
+19    False
+20    False
+21    False
+22    False
+23    False
+24    False
+25    False
+26    False
+27    False
+28    False
+29    False
+30     True
+31     True
+Name: Location, dtype: bool
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lemonade[lemonade[<span class="string">&#x27;Location&#x27;</span>] == <span class="string">&#x27;Beach&#x27;</span>].head(<span class="number">5</span>))</span><br><span class="line"><span class="comment"># 이처럼 자신이 원하는 데이터가 있는 프레임만 찾을 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>       Date Location  Lemon  Orange  Temperature  Leaflets  Price  Sold  \
+3  7/4/2016    Beach    134      99           76      98.0   0.25   233   
+4  7/5/2016    Beach    159     118           78     135.0   0.25   277   
+5  7/6/2016    Beach    103      69           82      90.0   0.25   172   
+6  7/6/2016    Beach    103      69           82      90.0   0.25   172   
+7  7/7/2016    Beach    143     101           81     135.0   0.25   244   
+
+   Revenue  
+3    58.25  
+4    69.25  
+5    43.00  
+6    43.00  
+7    61.00  
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lemonade.iloc[<span class="number">0</span>:<span class="number">3</span>, <span class="number">0</span>:<span class="number">2</span>])</span><br><span class="line"><span class="comment"># .iloc은 원하는 위치의 데이터를 표시할 수 있다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>       Date Location
+0  7/1/2016     Park
+1  7/2/2016     Park
+2  7/3/2016     Park
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lemonade.loc[<span class="number">0</span>:<span class="number">2</span>, [<span class="string">&#x27;Date&#x27;</span>,<span class="string">&#x27;Location&#x27;</span>]])</span><br><span class="line"><span class="comment"># .loc는 iloc와 다르게 컬럼명을 직접적으로 설정해줘야한다.</span></span><br><span class="line"><span class="comment"># 또한 loc는 지정한 범위 그대로 나온다</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>       Date Location
+0  7/1/2016     Park
+1  7/2/2016     Park
+2  7/3/2016     Park
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lemonade.loc[lemonade[<span class="string">&#x27;Revenue&#x27;</span>]&gt;<span class="number">45</span>, [<span class="string">&#x27;Date&#x27;</span>,<span class="string">&#x27;Revenue&#x27;</span>]].head(<span class="number">3</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># .loc와 조건문을 결합하여 사용이 가능하다. 이 경우 Revenue 값이 45보다</span></span><br><span class="line"><span class="comment"># 큰 데이터프레임에서 Date, Revenue 의 값을 출력한다 라는 의미다</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>       Date  Revenue
+2  7/3/2016    46.75
+3  7/4/2016    58.25
+4  7/5/2016    69.25
+
+
+
+
+
+&#39;\n.loc와 조건문을 결합하여 사용이 가능하다. 이 경우 Revenue 값이 45보다\n큰 데이터프레임에서 Date, Revenue 의 값을 출력한다 라는 의미다\n&#39;
+</code></pre>
+<h1 id="기존-데이터-전처리"><a href="#기존-데이터-전처리" class="headerlink" title="기존 데이터 전처리"></a>기존 데이터 전처리</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lemonade.sort_values(by=[<span class="string">&#x27;Temperature&#x27;</span>]).head(<span class="number">5</span>))</span><br><span class="line"><span class="comment"># Temperature 을 기준으로 오름차순 정렬</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>         Date Location  Lemon  Orange  Temperature  Leaflets  Price  Sold  \
+0    7/1/2016     Park     97      67           70      90.0   0.25   164   
+20  7/20/2016     Park     71      42           70       NaN   0.50   113   
+2    7/3/2016     Park    110      77           71     104.0   0.25   187   
+1    7/2/2016     Park     98      67           72      90.0   0.25   165   
+16  7/16/2016    Beach     81      50           74      90.0   0.50   131   
+
+    Revenue  
+0     41.00  
+20    56.50  
+2     46.75  
+1     41.25  
+16    65.50  
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lemonade.sort_values(by=[<span class="string">&#x27;Temperature&#x27;</span>, <span class="string">&#x27;Revenue&#x27;</span>], ascending= <span class="literal">False</span>, inplace = <span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(lemonade.loc[:,[<span class="string">&#x27;Date&#x27;</span>,<span class="string">&#x27;Temperature&#x27;</span>, <span class="string">&#x27;Revenue&#x27;</span>]].head(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Temperature, Revenue 두 컬럼을 기준으로 했지만 먼저 선언된 Temperature 을 기준</span></span><br><span class="line"><span class="comment"># ascending= False 이므로 내림차순 정렬</span></span><br><span class="line"><span class="comment"># inplace = True는 테이터프레임의 변경사항을 저장해주는 기능을 한다</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>         Date  Temperature  Revenue
+25  7/25/2016           84   134.50
+12  7/12/2016           84    56.25
+26  7/26/2016           83   106.75
+11  7/11/2016           83    70.50
+24  7/24/2016           82   101.50
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lemonade.groupby(by=<span class="string">&#x27;Location&#x27;</span>).count())</span><br><span class="line"><span class="comment"># 데이터들을 선언한 변수를 기준으로 그룹화 시켜준다.</span></span><br><span class="line"><span class="comment"># 예시의 코드는 Location 컬럼이 포함된 다른 컬럼의 총 갯수를 표현한다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>          Date  Lemon  Orange  Temperature  Leaflets  Price  Sold  Revenue
+Location                                                                  
+Beach       16     17      17           17        17     17    17       17
+Park        15     15      15           15        14     15    15       15
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lemonade.groupby(<span class="string">&#x27;Location&#x27;</span>)[<span class="string">&#x27;Revenue&#x27;</span>].agg([<span class="built_in">max</span>,<span class="built_in">min</span>]))</span><br><span class="line"><span class="comment"># 로케이션 별 최고 최소 수익을 나타내준다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>            max   min
+Location             
+Beach      95.5  43.0
+Park      134.5  41.0
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">lemonade.mean()</span><br><span class="line"><span class="built_in">print</span>(lemonade.groupby(<span class="string">&#x27;Location&#x27;</span>)[[<span class="string">&#x27;Revenue&#x27;</span>, <span class="string">&#x27;Sold&#x27;</span>]].agg([<span class="built_in">max</span>,<span class="built_in">min</span>,np.mean]))</span><br><span class="line"><span class="comment"># mean std sum 등 일부 함수는 .agg 안에서 넘파이에서 작성해야 한다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>         Revenue                  Sold                 
+             max   min       mean  max  min        mean
+Location                                               
+Beach       95.5  43.0  58.988235  282  123  201.294118
+Park       134.5  41.0  78.546667  305  113  190.333333
+</code></pre>
+<h1 id="결측치"><a href="#결측치" class="headerlink" title="결측치"></a>결측치</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lemonade.isna()</span><br><span class="line"><span class="comment"># 데이터 프레임의 결측치 값은 True 아닌것은 False로 반환한다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Lemon</th>
+      <th>Orange</th>
+      <th>Temperature</th>
+      <th>Leaflets</th>
+      <th>Price</th>
+      <th>Sold</th>
+      <th>Revenue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">null_del = lemonade</span><br><span class="line"><span class="comment"># null_del=null_del.head() : 행 수 줄여서 하는 코딩</span></span><br><span class="line"><span class="comment">#인덱스 명 제 코딩</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">null_del.dropna()</span><br><span class="line"><span class="comment"># 셀에 null 값이 하나라도 있을경우 해당 행을 삭제하여 출력한다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Lemon</th>
+      <th>Orange</th>
+      <th>Temperature</th>
+      <th>Leaflets</th>
+      <th>Price</th>
+      <th>Sold</th>
+      <th>Revenue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25</th>
+      <td>7/25/2016</td>
+      <td>Park</td>
+      <td>156</td>
+      <td>113</td>
+      <td>84</td>
+      <td>135.0</td>
+      <td>0.50</td>
+      <td>269</td>
+      <td>134.50</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>7/12/2016</td>
+      <td>Beach</td>
+      <td>130</td>
+      <td>95</td>
+      <td>84</td>
+      <td>99.0</td>
+      <td>0.25</td>
+      <td>225</td>
+      <td>56.25</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>7/26/2016</td>
+      <td>Park</td>
+      <td>176</td>
+      <td>129</td>
+      <td>83</td>
+      <td>158.0</td>
+      <td>0.35</td>
+      <td>305</td>
+      <td>106.75</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>7/11/2016</td>
+      <td>Beach</td>
+      <td>162</td>
+      <td>120</td>
+      <td>83</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>282</td>
+      <td>70.50</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>7/24/2016</td>
+      <td>Park</td>
+      <td>121</td>
+      <td>82</td>
+      <td>82</td>
+      <td>117.0</td>
+      <td>0.50</td>
+      <td>203</td>
+      <td>101.50</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">null_del.dropna(how=<span class="string">&#x27;all&#x27;</span>)</span><br><span class="line"><span class="comment"># 모든 행의 값이 null인 경우만 삭제하여 출력</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Lemon</th>
+      <th>Orange</th>
+      <th>Temperature</th>
+      <th>Leaflets</th>
+      <th>Price</th>
+      <th>Sold</th>
+      <th>Revenue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25</th>
+      <td>7/25/2016</td>
+      <td>Park</td>
+      <td>156</td>
+      <td>113</td>
+      <td>84</td>
+      <td>135.0</td>
+      <td>0.50</td>
+      <td>269</td>
+      <td>134.50</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>7/12/2016</td>
+      <td>Beach</td>
+      <td>130</td>
+      <td>95</td>
+      <td>84</td>
+      <td>99.0</td>
+      <td>0.25</td>
+      <td>225</td>
+      <td>56.25</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>7/26/2016</td>
+      <td>Park</td>
+      <td>176</td>
+      <td>129</td>
+      <td>83</td>
+      <td>158.0</td>
+      <td>0.35</td>
+      <td>305</td>
+      <td>106.75</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>7/11/2016</td>
+      <td>Beach</td>
+      <td>162</td>
+      <td>120</td>
+      <td>83</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>282</td>
+      <td>70.50</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>7/24/2016</td>
+      <td>Park</td>
+      <td>121</td>
+      <td>82</td>
+      <td>82</td>
+      <td>117.0</td>
+      <td>0.50</td>
+      <td>203</td>
+      <td>101.50</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>7/10/2016</td>
+      <td>Beach</td>
+      <td>140</td>
+      <td>98</td>
+      <td>82</td>
+      <td>131.0</td>
+      <td>0.25</td>
+      <td>238</td>
+      <td>59.50</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>7/28/2016</td>
+      <td>Park</td>
+      <td>96</td>
+      <td>63</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.35</td>
+      <td>159</td>
+      <td>55.65</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>NaN</td>
+      <td>Beach</td>
+      <td>123</td>
+      <td>86</td>
+      <td>82</td>
+      <td>113.0</td>
+      <td>0.25</td>
+      <td>209</td>
+      <td>52.25</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>7/30/2016</td>
+      <td>Beach</td>
+      <td>88</td>
+      <td>57</td>
+      <td>82</td>
+      <td>81.0</td>
+      <td>0.35</td>
+      <td>145</td>
+      <td>50.75</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>7/31/2016</td>
+      <td>Beach</td>
+      <td>76</td>
+      <td>47</td>
+      <td>82</td>
+      <td>68.0</td>
+      <td>0.35</td>
+      <td>123</td>
+      <td>43.05</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7/6/2016</td>
+      <td>Beach</td>
+      <td>103</td>
+      <td>69</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>172</td>
+      <td>43.00</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7/6/2016</td>
+      <td>Beach</td>
+      <td>103</td>
+      <td>69</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>172</td>
+      <td>43.00</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>7/18/2016</td>
+      <td>Park</td>
+      <td>131</td>
+      <td>92</td>
+      <td>81</td>
+      <td>122.0</td>
+      <td>0.50</td>
+      <td>223</td>
+      <td>111.50</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>7/23/2016</td>
+      <td>Park</td>
+      <td>120</td>
+      <td>82</td>
+      <td>81</td>
+      <td>117.0</td>
+      <td>0.50</td>
+      <td>202</td>
+      <td>101.00</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7/7/2016</td>
+      <td>Beach</td>
+      <td>143</td>
+      <td>101</td>
+      <td>81</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>244</td>
+      <td>61.00</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>7/29/2016</td>
+      <td>Park</td>
+      <td>100</td>
+      <td>66</td>
+      <td>81</td>
+      <td>95.0</td>
+      <td>0.35</td>
+      <td>166</td>
+      <td>58.10</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>7/22/2016</td>
+      <td>Park</td>
+      <td>112</td>
+      <td>75</td>
+      <td>80</td>
+      <td>108.0</td>
+      <td>0.50</td>
+      <td>187</td>
+      <td>93.50</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>7/27/2016</td>
+      <td>Park</td>
+      <td>104</td>
+      <td>68</td>
+      <td>80</td>
+      <td>99.0</td>
+      <td>0.35</td>
+      <td>172</td>
+      <td>60.20</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>7/9/2016</td>
+      <td>Beach</td>
+      <td>134</td>
+      <td>95</td>
+      <td>80</td>
+      <td>126.0</td>
+      <td>0.25</td>
+      <td>229</td>
+      <td>57.25</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>7/19/2016</td>
+      <td>Park</td>
+      <td>122</td>
+      <td>85</td>
+      <td>78</td>
+      <td>113.0</td>
+      <td>0.50</td>
+      <td>207</td>
+      <td>103.50</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7/5/2016</td>
+      <td>Beach</td>
+      <td>159</td>
+      <td>118</td>
+      <td>78</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>277</td>
+      <td>69.25</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>7/14/2016</td>
+      <td>Beach</td>
+      <td>122</td>
+      <td>85</td>
+      <td>78</td>
+      <td>113.0</td>
+      <td>0.25</td>
+      <td>207</td>
+      <td>51.75</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>7/17/2016</td>
+      <td>Beach</td>
+      <td>115</td>
+      <td>76</td>
+      <td>77</td>
+      <td>126.0</td>
+      <td>0.50</td>
+      <td>191</td>
+      <td>95.50</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>7/21/2016</td>
+      <td>Park</td>
+      <td>83</td>
+      <td>50</td>
+      <td>77</td>
+      <td>90.0</td>
+      <td>0.50</td>
+      <td>133</td>
+      <td>66.50</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>7/13/2016</td>
+      <td>Beach</td>
+      <td>109</td>
+      <td>75</td>
+      <td>77</td>
+      <td>99.0</td>
+      <td>0.25</td>
+      <td>184</td>
+      <td>46.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7/4/2016</td>
+      <td>Beach</td>
+      <td>134</td>
+      <td>99</td>
+      <td>76</td>
+      <td>98.0</td>
+      <td>0.25</td>
+      <td>233</td>
+      <td>58.25</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>7/15/2016</td>
+      <td>Beach</td>
+      <td>98</td>
+      <td>62</td>
+      <td>75</td>
+      <td>108.0</td>
+      <td>0.50</td>
+      <td>160</td>
+      <td>80.00</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>7/16/2016</td>
+      <td>Beach</td>
+      <td>81</td>
+      <td>50</td>
+      <td>74</td>
+      <td>90.0</td>
+      <td>0.50</td>
+      <td>131</td>
+      <td>65.50</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7/2/2016</td>
+      <td>Park</td>
+      <td>98</td>
+      <td>67</td>
+      <td>72</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>165</td>
+      <td>41.25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7/3/2016</td>
+      <td>Park</td>
+      <td>110</td>
+      <td>77</td>
+      <td>71</td>
+      <td>104.0</td>
+      <td>0.25</td>
+      <td>187</td>
+      <td>46.75</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>7/20/2016</td>
+      <td>Park</td>
+      <td>71</td>
+      <td>42</td>
+      <td>70</td>
+      <td>NaN</td>
+      <td>0.50</td>
+      <td>113</td>
+      <td>56.50</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>7/1/2016</td>
+      <td>Park</td>
+      <td>97</td>
+      <td>67</td>
+      <td>70</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>164</td>
+      <td>41.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">null_del.fillna(<span class="number">0</span>)</span><br><span class="line"><span class="comment"># null 값을 전부 0으로 대체해주는 메서드</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Lemon</th>
+      <th>Orange</th>
+      <th>Temperature</th>
+      <th>Leaflets</th>
+      <th>Price</th>
+      <th>Sold</th>
+      <th>Revenue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25</th>
+      <td>7/25/2016</td>
+      <td>Park</td>
+      <td>156</td>
+      <td>113</td>
+      <td>84</td>
+      <td>135.0</td>
+      <td>0.50</td>
+      <td>269</td>
+      <td>134.50</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>7/12/2016</td>
+      <td>Beach</td>
+      <td>130</td>
+      <td>95</td>
+      <td>84</td>
+      <td>99.0</td>
+      <td>0.25</td>
+      <td>225</td>
+      <td>56.25</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>7/26/2016</td>
+      <td>Park</td>
+      <td>176</td>
+      <td>129</td>
+      <td>83</td>
+      <td>158.0</td>
+      <td>0.35</td>
+      <td>305</td>
+      <td>106.75</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>7/11/2016</td>
+      <td>Beach</td>
+      <td>162</td>
+      <td>120</td>
+      <td>83</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>282</td>
+      <td>70.50</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>7/24/2016</td>
+      <td>Park</td>
+      <td>121</td>
+      <td>82</td>
+      <td>82</td>
+      <td>117.0</td>
+      <td>0.50</td>
+      <td>203</td>
+      <td>101.50</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>7/10/2016</td>
+      <td>Beach</td>
+      <td>140</td>
+      <td>98</td>
+      <td>82</td>
+      <td>131.0</td>
+      <td>0.25</td>
+      <td>238</td>
+      <td>59.50</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>7/28/2016</td>
+      <td>Park</td>
+      <td>96</td>
+      <td>63</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.35</td>
+      <td>159</td>
+      <td>55.65</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0</td>
+      <td>Beach</td>
+      <td>123</td>
+      <td>86</td>
+      <td>82</td>
+      <td>113.0</td>
+      <td>0.25</td>
+      <td>209</td>
+      <td>52.25</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>7/30/2016</td>
+      <td>Beach</td>
+      <td>88</td>
+      <td>57</td>
+      <td>82</td>
+      <td>81.0</td>
+      <td>0.35</td>
+      <td>145</td>
+      <td>50.75</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>7/31/2016</td>
+      <td>Beach</td>
+      <td>76</td>
+      <td>47</td>
+      <td>82</td>
+      <td>68.0</td>
+      <td>0.35</td>
+      <td>123</td>
+      <td>43.05</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7/6/2016</td>
+      <td>Beach</td>
+      <td>103</td>
+      <td>69</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>172</td>
+      <td>43.00</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7/6/2016</td>
+      <td>Beach</td>
+      <td>103</td>
+      <td>69</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>172</td>
+      <td>43.00</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>7/18/2016</td>
+      <td>Park</td>
+      <td>131</td>
+      <td>92</td>
+      <td>81</td>
+      <td>122.0</td>
+      <td>0.50</td>
+      <td>223</td>
+      <td>111.50</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>7/23/2016</td>
+      <td>Park</td>
+      <td>120</td>
+      <td>82</td>
+      <td>81</td>
+      <td>117.0</td>
+      <td>0.50</td>
+      <td>202</td>
+      <td>101.00</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7/7/2016</td>
+      <td>Beach</td>
+      <td>143</td>
+      <td>101</td>
+      <td>81</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>244</td>
+      <td>61.00</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>7/29/2016</td>
+      <td>Park</td>
+      <td>100</td>
+      <td>66</td>
+      <td>81</td>
+      <td>95.0</td>
+      <td>0.35</td>
+      <td>166</td>
+      <td>58.10</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>7/22/2016</td>
+      <td>Park</td>
+      <td>112</td>
+      <td>75</td>
+      <td>80</td>
+      <td>108.0</td>
+      <td>0.50</td>
+      <td>187</td>
+      <td>93.50</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>7/27/2016</td>
+      <td>Park</td>
+      <td>104</td>
+      <td>68</td>
+      <td>80</td>
+      <td>99.0</td>
+      <td>0.35</td>
+      <td>172</td>
+      <td>60.20</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>7/9/2016</td>
+      <td>Beach</td>
+      <td>134</td>
+      <td>95</td>
+      <td>80</td>
+      <td>126.0</td>
+      <td>0.25</td>
+      <td>229</td>
+      <td>57.25</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>7/19/2016</td>
+      <td>Park</td>
+      <td>122</td>
+      <td>85</td>
+      <td>78</td>
+      <td>113.0</td>
+      <td>0.50</td>
+      <td>207</td>
+      <td>103.50</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7/5/2016</td>
+      <td>Beach</td>
+      <td>159</td>
+      <td>118</td>
+      <td>78</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>277</td>
+      <td>69.25</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>7/14/2016</td>
+      <td>Beach</td>
+      <td>122</td>
+      <td>85</td>
+      <td>78</td>
+      <td>113.0</td>
+      <td>0.25</td>
+      <td>207</td>
+      <td>51.75</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>7/17/2016</td>
+      <td>Beach</td>
+      <td>115</td>
+      <td>76</td>
+      <td>77</td>
+      <td>126.0</td>
+      <td>0.50</td>
+      <td>191</td>
+      <td>95.50</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>7/21/2016</td>
+      <td>Park</td>
+      <td>83</td>
+      <td>50</td>
+      <td>77</td>
+      <td>90.0</td>
+      <td>0.50</td>
+      <td>133</td>
+      <td>66.50</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>7/13/2016</td>
+      <td>Beach</td>
+      <td>109</td>
+      <td>75</td>
+      <td>77</td>
+      <td>99.0</td>
+      <td>0.25</td>
+      <td>184</td>
+      <td>46.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7/4/2016</td>
+      <td>Beach</td>
+      <td>134</td>
+      <td>99</td>
+      <td>76</td>
+      <td>98.0</td>
+      <td>0.25</td>
+      <td>233</td>
+      <td>58.25</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>7/15/2016</td>
+      <td>Beach</td>
+      <td>98</td>
+      <td>62</td>
+      <td>75</td>
+      <td>108.0</td>
+      <td>0.50</td>
+      <td>160</td>
+      <td>80.00</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>7/16/2016</td>
+      <td>Beach</td>
+      <td>81</td>
+      <td>50</td>
+      <td>74</td>
+      <td>90.0</td>
+      <td>0.50</td>
+      <td>131</td>
+      <td>65.50</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7/2/2016</td>
+      <td>Park</td>
+      <td>98</td>
+      <td>67</td>
+      <td>72</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>165</td>
+      <td>41.25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7/3/2016</td>
+      <td>Park</td>
+      <td>110</td>
+      <td>77</td>
+      <td>71</td>
+      <td>104.0</td>
+      <td>0.25</td>
+      <td>187</td>
+      <td>46.75</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>7/20/2016</td>
+      <td>Park</td>
+      <td>71</td>
+      <td>42</td>
+      <td>70</td>
+      <td>0.0</td>
+      <td>0.50</td>
+      <td>113</td>
+      <td>56.50</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>7/1/2016</td>
+      <td>Park</td>
+      <td>97</td>
+      <td>67</td>
+      <td>70</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>164</td>
+      <td>41.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">null_del.fillna(&#123;<span class="string">&#x27;Date&#x27;</span>: null_del[<span class="string">&#x27;Date&#x27;</span>].mean()&#125;)</span><br><span class="line"><span class="comment"># 이러한 코드로 넣을 경우 Date 컬럼 값중 null 값은 Date의 평균 값으로 대체된다.</span></span><br><span class="line"><span class="comment"># 하지만 오류가 난 것은, 현제 Date값이 정수,실수형이 아닌 </span></span><br><span class="line"><span class="comment"># String 타입으로 작성되어 연산이 되지 않기 때문이다.</span></span><br></pre></td></tr></table></figure>
+
+
+<pre><code>---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+&lt;ipython-input-113-b3d91e8536a6&gt; in &lt;module&gt;()
+----&gt; 1 null_del.fillna(&#123;&#39;Date&#39;: null_del[&#39;Date&#39;].mean()&#125;)
+
+
+/usr/local/lib/python3.7/dist-packages/pandas/core/generic.py in stat_func(self, axis, skipna, level, numeric_only, **kwargs)
+  11473             return self._agg_by_level(name, axis=axis, level=level, skipna=skipna)
+  11474         return self._reduce(
+&gt; 11475             func, name=name, axis=axis, skipna=skipna, numeric_only=numeric_only
+  11476         )
+  11477 
+
+
+/usr/local/lib/python3.7/dist-packages/pandas/core/series.py in _reduce(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)
+   4247                 )
+   4248             with np.errstate(all=&quot;ignore&quot;):
+-&gt; 4249                 return op(delegate, skipna=skipna, **kwds)
+   4250 
+   4251     def _reindex_indexer(self, new_index, indexer, copy):
+
+
+/usr/local/lib/python3.7/dist-packages/pandas/core/nanops.py in _f(*args, **kwargs)
+     69             try:
+     70                 with np.errstate(invalid=&quot;ignore&quot;):
+---&gt; 71                     return f(*args, **kwargs)
+     72             except ValueError as e:
+     73                 # we want to transform an object array
+
+
+/usr/local/lib/python3.7/dist-packages/pandas/core/nanops.py in f(values, axis, skipna, **kwds)
+    127                     result = alt(values, axis=axis, skipna=skipna, **kwds)
+    128             else:
+--&gt; 129                 result = alt(values, axis=axis, skipna=skipna, **kwds)
+    130 
+    131             return result
+
+
+/usr/local/lib/python3.7/dist-packages/pandas/core/nanops.py in nanmean(values, axis, skipna, mask)
+    561         dtype_count = dtype
+    562     count = _get_counts(values.shape, mask, axis, dtype=dtype_count)
+--&gt; 563     the_sum = _ensure_numeric(values.sum(axis, dtype=dtype_sum))
+    564 
+    565     if axis is not None and getattr(the_sum, &quot;ndim&quot;, False):
+
+
+/usr/local/lib/python3.7/dist-packages/numpy/core/_methods.py in _sum(a, axis, dtype, out, keepdims, initial, where)
+     45 def _sum(a, axis=None, dtype=None, out=None, keepdims=False,
+     46          initial=_NoValue, where=True):
+---&gt; 47     return umr_sum(a, axis, dtype, out, keepdims, initial, where)
+     48 
+     49 def _prod(a, axis=None, dtype=None, out=None, keepdims=False,
+
+
+TypeError: can only concatenate str (not &quot;int&quot;) to str
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">null_del.fillna(&#123;<span class="string">&#x27;Date&#x27;</span> : <span class="string">&#x27;12/31/2021&#x27;</span>&#125;)</span><br><span class="line"><span class="comment"># 이럴 경우 딕셔너리로 칼럼명과 데이터를 넘겨주면 변경이 가능하다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Lemon</th>
+      <th>Orange</th>
+      <th>Temperature</th>
+      <th>Leaflets</th>
+      <th>Price</th>
+      <th>Sold</th>
+      <th>Revenue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25</th>
+      <td>7/25/2016</td>
+      <td>Park</td>
+      <td>156</td>
+      <td>113</td>
+      <td>84</td>
+      <td>135.0</td>
+      <td>0.50</td>
+      <td>269</td>
+      <td>134.50</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>7/12/2016</td>
+      <td>Beach</td>
+      <td>130</td>
+      <td>95</td>
+      <td>84</td>
+      <td>99.0</td>
+      <td>0.25</td>
+      <td>225</td>
+      <td>56.25</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>7/26/2016</td>
+      <td>Park</td>
+      <td>176</td>
+      <td>129</td>
+      <td>83</td>
+      <td>158.0</td>
+      <td>0.35</td>
+      <td>305</td>
+      <td>106.75</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>7/11/2016</td>
+      <td>Beach</td>
+      <td>162</td>
+      <td>120</td>
+      <td>83</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>282</td>
+      <td>70.50</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>7/24/2016</td>
+      <td>Park</td>
+      <td>121</td>
+      <td>82</td>
+      <td>82</td>
+      <td>117.0</td>
+      <td>0.50</td>
+      <td>203</td>
+      <td>101.50</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>7/10/2016</td>
+      <td>Beach</td>
+      <td>140</td>
+      <td>98</td>
+      <td>82</td>
+      <td>131.0</td>
+      <td>0.25</td>
+      <td>238</td>
+      <td>59.50</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>7/28/2016</td>
+      <td>Park</td>
+      <td>96</td>
+      <td>63</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.35</td>
+      <td>159</td>
+      <td>55.65</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>12/31/2021</td>
+      <td>Beach</td>
+      <td>123</td>
+      <td>86</td>
+      <td>82</td>
+      <td>113.0</td>
+      <td>0.25</td>
+      <td>209</td>
+      <td>52.25</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>7/30/2016</td>
+      <td>Beach</td>
+      <td>88</td>
+      <td>57</td>
+      <td>82</td>
+      <td>81.0</td>
+      <td>0.35</td>
+      <td>145</td>
+      <td>50.75</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>7/31/2016</td>
+      <td>Beach</td>
+      <td>76</td>
+      <td>47</td>
+      <td>82</td>
+      <td>68.0</td>
+      <td>0.35</td>
+      <td>123</td>
+      <td>43.05</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7/6/2016</td>
+      <td>Beach</td>
+      <td>103</td>
+      <td>69</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>172</td>
+      <td>43.00</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7/6/2016</td>
+      <td>Beach</td>
+      <td>103</td>
+      <td>69</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>172</td>
+      <td>43.00</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>7/18/2016</td>
+      <td>Park</td>
+      <td>131</td>
+      <td>92</td>
+      <td>81</td>
+      <td>122.0</td>
+      <td>0.50</td>
+      <td>223</td>
+      <td>111.50</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>7/23/2016</td>
+      <td>Park</td>
+      <td>120</td>
+      <td>82</td>
+      <td>81</td>
+      <td>117.0</td>
+      <td>0.50</td>
+      <td>202</td>
+      <td>101.00</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7/7/2016</td>
+      <td>Beach</td>
+      <td>143</td>
+      <td>101</td>
+      <td>81</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>244</td>
+      <td>61.00</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>7/29/2016</td>
+      <td>Park</td>
+      <td>100</td>
+      <td>66</td>
+      <td>81</td>
+      <td>95.0</td>
+      <td>0.35</td>
+      <td>166</td>
+      <td>58.10</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>7/22/2016</td>
+      <td>Park</td>
+      <td>112</td>
+      <td>75</td>
+      <td>80</td>
+      <td>108.0</td>
+      <td>0.50</td>
+      <td>187</td>
+      <td>93.50</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>7/27/2016</td>
+      <td>Park</td>
+      <td>104</td>
+      <td>68</td>
+      <td>80</td>
+      <td>99.0</td>
+      <td>0.35</td>
+      <td>172</td>
+      <td>60.20</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>7/9/2016</td>
+      <td>Beach</td>
+      <td>134</td>
+      <td>95</td>
+      <td>80</td>
+      <td>126.0</td>
+      <td>0.25</td>
+      <td>229</td>
+      <td>57.25</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>7/19/2016</td>
+      <td>Park</td>
+      <td>122</td>
+      <td>85</td>
+      <td>78</td>
+      <td>113.0</td>
+      <td>0.50</td>
+      <td>207</td>
+      <td>103.50</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7/5/2016</td>
+      <td>Beach</td>
+      <td>159</td>
+      <td>118</td>
+      <td>78</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>277</td>
+      <td>69.25</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>7/14/2016</td>
+      <td>Beach</td>
+      <td>122</td>
+      <td>85</td>
+      <td>78</td>
+      <td>113.0</td>
+      <td>0.25</td>
+      <td>207</td>
+      <td>51.75</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>7/17/2016</td>
+      <td>Beach</td>
+      <td>115</td>
+      <td>76</td>
+      <td>77</td>
+      <td>126.0</td>
+      <td>0.50</td>
+      <td>191</td>
+      <td>95.50</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>7/21/2016</td>
+      <td>Park</td>
+      <td>83</td>
+      <td>50</td>
+      <td>77</td>
+      <td>90.0</td>
+      <td>0.50</td>
+      <td>133</td>
+      <td>66.50</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>7/13/2016</td>
+      <td>Beach</td>
+      <td>109</td>
+      <td>75</td>
+      <td>77</td>
+      <td>99.0</td>
+      <td>0.25</td>
+      <td>184</td>
+      <td>46.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7/4/2016</td>
+      <td>Beach</td>
+      <td>134</td>
+      <td>99</td>
+      <td>76</td>
+      <td>98.0</td>
+      <td>0.25</td>
+      <td>233</td>
+      <td>58.25</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>7/15/2016</td>
+      <td>Beach</td>
+      <td>98</td>
+      <td>62</td>
+      <td>75</td>
+      <td>108.0</td>
+      <td>0.50</td>
+      <td>160</td>
+      <td>80.00</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>7/16/2016</td>
+      <td>Beach</td>
+      <td>81</td>
+      <td>50</td>
+      <td>74</td>
+      <td>90.0</td>
+      <td>0.50</td>
+      <td>131</td>
+      <td>65.50</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7/2/2016</td>
+      <td>Park</td>
+      <td>98</td>
+      <td>67</td>
+      <td>72</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>165</td>
+      <td>41.25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7/3/2016</td>
+      <td>Park</td>
+      <td>110</td>
+      <td>77</td>
+      <td>71</td>
+      <td>104.0</td>
+      <td>0.25</td>
+      <td>187</td>
+      <td>46.75</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>7/20/2016</td>
+      <td>Park</td>
+      <td>71</td>
+      <td>42</td>
+      <td>70</td>
+      <td>NaN</td>
+      <td>0.50</td>
+      <td>113</td>
+      <td>56.50</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>7/1/2016</td>
+      <td>Park</td>
+      <td>97</td>
+      <td>67</td>
+      <td>70</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>164</td>
+      <td>41.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 결측치를 알맞게 대체 했다면 적용하는 방법이다.</span></span><br><span class="line">null_del</span><br><span class="line"><span class="comment"># 지금의 데이터는 null 갑이 대체되지 않았다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Lemon</th>
+      <th>Orange</th>
+      <th>Temperature</th>
+      <th>Leaflets</th>
+      <th>Price</th>
+      <th>Sold</th>
+      <th>Revenue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25</th>
+      <td>7/25/2016</td>
+      <td>Park</td>
+      <td>156</td>
+      <td>113</td>
+      <td>84</td>
+      <td>135.0</td>
+      <td>0.50</td>
+      <td>269</td>
+      <td>134.50</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>7/12/2016</td>
+      <td>Beach</td>
+      <td>130</td>
+      <td>95</td>
+      <td>84</td>
+      <td>99.0</td>
+      <td>0.25</td>
+      <td>225</td>
+      <td>56.25</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>7/26/2016</td>
+      <td>Park</td>
+      <td>176</td>
+      <td>129</td>
+      <td>83</td>
+      <td>158.0</td>
+      <td>0.35</td>
+      <td>305</td>
+      <td>106.75</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>7/11/2016</td>
+      <td>Beach</td>
+      <td>162</td>
+      <td>120</td>
+      <td>83</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>282</td>
+      <td>70.50</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>7/24/2016</td>
+      <td>Park</td>
+      <td>121</td>
+      <td>82</td>
+      <td>82</td>
+      <td>117.0</td>
+      <td>0.50</td>
+      <td>203</td>
+      <td>101.50</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>7/10/2016</td>
+      <td>Beach</td>
+      <td>140</td>
+      <td>98</td>
+      <td>82</td>
+      <td>131.0</td>
+      <td>0.25</td>
+      <td>238</td>
+      <td>59.50</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>7/28/2016</td>
+      <td>Park</td>
+      <td>96</td>
+      <td>63</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.35</td>
+      <td>159</td>
+      <td>55.65</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>NaN</td>
+      <td>Beach</td>
+      <td>123</td>
+      <td>86</td>
+      <td>82</td>
+      <td>113.0</td>
+      <td>0.25</td>
+      <td>209</td>
+      <td>52.25</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>7/30/2016</td>
+      <td>Beach</td>
+      <td>88</td>
+      <td>57</td>
+      <td>82</td>
+      <td>81.0</td>
+      <td>0.35</td>
+      <td>145</td>
+      <td>50.75</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>7/31/2016</td>
+      <td>Beach</td>
+      <td>76</td>
+      <td>47</td>
+      <td>82</td>
+      <td>68.0</td>
+      <td>0.35</td>
+      <td>123</td>
+      <td>43.05</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7/6/2016</td>
+      <td>Beach</td>
+      <td>103</td>
+      <td>69</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>172</td>
+      <td>43.00</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7/6/2016</td>
+      <td>Beach</td>
+      <td>103</td>
+      <td>69</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>172</td>
+      <td>43.00</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>7/18/2016</td>
+      <td>Park</td>
+      <td>131</td>
+      <td>92</td>
+      <td>81</td>
+      <td>122.0</td>
+      <td>0.50</td>
+      <td>223</td>
+      <td>111.50</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>7/23/2016</td>
+      <td>Park</td>
+      <td>120</td>
+      <td>82</td>
+      <td>81</td>
+      <td>117.0</td>
+      <td>0.50</td>
+      <td>202</td>
+      <td>101.00</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7/7/2016</td>
+      <td>Beach</td>
+      <td>143</td>
+      <td>101</td>
+      <td>81</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>244</td>
+      <td>61.00</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>7/29/2016</td>
+      <td>Park</td>
+      <td>100</td>
+      <td>66</td>
+      <td>81</td>
+      <td>95.0</td>
+      <td>0.35</td>
+      <td>166</td>
+      <td>58.10</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>7/22/2016</td>
+      <td>Park</td>
+      <td>112</td>
+      <td>75</td>
+      <td>80</td>
+      <td>108.0</td>
+      <td>0.50</td>
+      <td>187</td>
+      <td>93.50</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>7/27/2016</td>
+      <td>Park</td>
+      <td>104</td>
+      <td>68</td>
+      <td>80</td>
+      <td>99.0</td>
+      <td>0.35</td>
+      <td>172</td>
+      <td>60.20</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>7/9/2016</td>
+      <td>Beach</td>
+      <td>134</td>
+      <td>95</td>
+      <td>80</td>
+      <td>126.0</td>
+      <td>0.25</td>
+      <td>229</td>
+      <td>57.25</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>7/19/2016</td>
+      <td>Park</td>
+      <td>122</td>
+      <td>85</td>
+      <td>78</td>
+      <td>113.0</td>
+      <td>0.50</td>
+      <td>207</td>
+      <td>103.50</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7/5/2016</td>
+      <td>Beach</td>
+      <td>159</td>
+      <td>118</td>
+      <td>78</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>277</td>
+      <td>69.25</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>7/14/2016</td>
+      <td>Beach</td>
+      <td>122</td>
+      <td>85</td>
+      <td>78</td>
+      <td>113.0</td>
+      <td>0.25</td>
+      <td>207</td>
+      <td>51.75</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>7/17/2016</td>
+      <td>Beach</td>
+      <td>115</td>
+      <td>76</td>
+      <td>77</td>
+      <td>126.0</td>
+      <td>0.50</td>
+      <td>191</td>
+      <td>95.50</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>7/21/2016</td>
+      <td>Park</td>
+      <td>83</td>
+      <td>50</td>
+      <td>77</td>
+      <td>90.0</td>
+      <td>0.50</td>
+      <td>133</td>
+      <td>66.50</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>7/13/2016</td>
+      <td>Beach</td>
+      <td>109</td>
+      <td>75</td>
+      <td>77</td>
+      <td>99.0</td>
+      <td>0.25</td>
+      <td>184</td>
+      <td>46.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7/4/2016</td>
+      <td>Beach</td>
+      <td>134</td>
+      <td>99</td>
+      <td>76</td>
+      <td>98.0</td>
+      <td>0.25</td>
+      <td>233</td>
+      <td>58.25</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>7/15/2016</td>
+      <td>Beach</td>
+      <td>98</td>
+      <td>62</td>
+      <td>75</td>
+      <td>108.0</td>
+      <td>0.50</td>
+      <td>160</td>
+      <td>80.00</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>7/16/2016</td>
+      <td>Beach</td>
+      <td>81</td>
+      <td>50</td>
+      <td>74</td>
+      <td>90.0</td>
+      <td>0.50</td>
+      <td>131</td>
+      <td>65.50</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7/2/2016</td>
+      <td>Park</td>
+      <td>98</td>
+      <td>67</td>
+      <td>72</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>165</td>
+      <td>41.25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7/3/2016</td>
+      <td>Park</td>
+      <td>110</td>
+      <td>77</td>
+      <td>71</td>
+      <td>104.0</td>
+      <td>0.25</td>
+      <td>187</td>
+      <td>46.75</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>7/20/2016</td>
+      <td>Park</td>
+      <td>71</td>
+      <td>42</td>
+      <td>70</td>
+      <td>NaN</td>
+      <td>0.50</td>
+      <td>113</td>
+      <td>56.50</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>7/1/2016</td>
+      <td>Park</td>
+      <td>97</td>
+      <td>67</td>
+      <td>70</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>164</td>
+      <td>41.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">null_del.fillna(&#123;<span class="string">&#x27;Date&#x27;</span> : <span class="string">&#x27;12/31/2021&#x27;</span>&#125;,inplace=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">null_del.fillna(method=<span class="string">&#x27;ffill&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># inplace로 변경된 값을 데이터 프레임에 적용해주고, </span></span><br><span class="line"><span class="comment"># method 매개변수는 앞에서 뒤의 데이터를 대체해주는 &#x27;ffill&#x27;</span></span><br><span class="line"><span class="comment"># 뒤에서 대체해주는 &#x27;backfill 이 있다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Lemon</th>
+      <th>Orange</th>
+      <th>Temperature</th>
+      <th>Leaflets</th>
+      <th>Price</th>
+      <th>Sold</th>
+      <th>Revenue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25</th>
+      <td>7/25/2016</td>
+      <td>Park</td>
+      <td>156</td>
+      <td>113</td>
+      <td>84</td>
+      <td>135.0</td>
+      <td>0.50</td>
+      <td>269</td>
+      <td>134.50</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>7/12/2016</td>
+      <td>Beach</td>
+      <td>130</td>
+      <td>95</td>
+      <td>84</td>
+      <td>99.0</td>
+      <td>0.25</td>
+      <td>225</td>
+      <td>56.25</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>7/26/2016</td>
+      <td>Park</td>
+      <td>176</td>
+      <td>129</td>
+      <td>83</td>
+      <td>158.0</td>
+      <td>0.35</td>
+      <td>305</td>
+      <td>106.75</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>7/11/2016</td>
+      <td>Beach</td>
+      <td>162</td>
+      <td>120</td>
+      <td>83</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>282</td>
+      <td>70.50</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>7/24/2016</td>
+      <td>Park</td>
+      <td>121</td>
+      <td>82</td>
+      <td>82</td>
+      <td>117.0</td>
+      <td>0.50</td>
+      <td>203</td>
+      <td>101.50</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>7/10/2016</td>
+      <td>Beach</td>
+      <td>140</td>
+      <td>98</td>
+      <td>82</td>
+      <td>131.0</td>
+      <td>0.25</td>
+      <td>238</td>
+      <td>59.50</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>7/28/2016</td>
+      <td>Park</td>
+      <td>96</td>
+      <td>63</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.35</td>
+      <td>159</td>
+      <td>55.65</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>12/31/2021</td>
+      <td>Beach</td>
+      <td>123</td>
+      <td>86</td>
+      <td>82</td>
+      <td>113.0</td>
+      <td>0.25</td>
+      <td>209</td>
+      <td>52.25</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>7/30/2016</td>
+      <td>Beach</td>
+      <td>88</td>
+      <td>57</td>
+      <td>82</td>
+      <td>81.0</td>
+      <td>0.35</td>
+      <td>145</td>
+      <td>50.75</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>7/31/2016</td>
+      <td>Beach</td>
+      <td>76</td>
+      <td>47</td>
+      <td>82</td>
+      <td>68.0</td>
+      <td>0.35</td>
+      <td>123</td>
+      <td>43.05</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7/6/2016</td>
+      <td>Beach</td>
+      <td>103</td>
+      <td>69</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>172</td>
+      <td>43.00</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7/6/2016</td>
+      <td>Beach</td>
+      <td>103</td>
+      <td>69</td>
+      <td>82</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>172</td>
+      <td>43.00</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>7/18/2016</td>
+      <td>Park</td>
+      <td>131</td>
+      <td>92</td>
+      <td>81</td>
+      <td>122.0</td>
+      <td>0.50</td>
+      <td>223</td>
+      <td>111.50</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>7/23/2016</td>
+      <td>Park</td>
+      <td>120</td>
+      <td>82</td>
+      <td>81</td>
+      <td>117.0</td>
+      <td>0.50</td>
+      <td>202</td>
+      <td>101.00</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7/7/2016</td>
+      <td>Beach</td>
+      <td>143</td>
+      <td>101</td>
+      <td>81</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>244</td>
+      <td>61.00</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>7/29/2016</td>
+      <td>Park</td>
+      <td>100</td>
+      <td>66</td>
+      <td>81</td>
+      <td>95.0</td>
+      <td>0.35</td>
+      <td>166</td>
+      <td>58.10</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>7/22/2016</td>
+      <td>Park</td>
+      <td>112</td>
+      <td>75</td>
+      <td>80</td>
+      <td>108.0</td>
+      <td>0.50</td>
+      <td>187</td>
+      <td>93.50</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>7/27/2016</td>
+      <td>Park</td>
+      <td>104</td>
+      <td>68</td>
+      <td>80</td>
+      <td>99.0</td>
+      <td>0.35</td>
+      <td>172</td>
+      <td>60.20</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>7/9/2016</td>
+      <td>Beach</td>
+      <td>134</td>
+      <td>95</td>
+      <td>80</td>
+      <td>126.0</td>
+      <td>0.25</td>
+      <td>229</td>
+      <td>57.25</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>7/19/2016</td>
+      <td>Park</td>
+      <td>122</td>
+      <td>85</td>
+      <td>78</td>
+      <td>113.0</td>
+      <td>0.50</td>
+      <td>207</td>
+      <td>103.50</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7/5/2016</td>
+      <td>Beach</td>
+      <td>159</td>
+      <td>118</td>
+      <td>78</td>
+      <td>135.0</td>
+      <td>0.25</td>
+      <td>277</td>
+      <td>69.25</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>7/14/2016</td>
+      <td>Beach</td>
+      <td>122</td>
+      <td>85</td>
+      <td>78</td>
+      <td>113.0</td>
+      <td>0.25</td>
+      <td>207</td>
+      <td>51.75</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>7/17/2016</td>
+      <td>Beach</td>
+      <td>115</td>
+      <td>76</td>
+      <td>77</td>
+      <td>126.0</td>
+      <td>0.50</td>
+      <td>191</td>
+      <td>95.50</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>7/21/2016</td>
+      <td>Park</td>
+      <td>83</td>
+      <td>50</td>
+      <td>77</td>
+      <td>90.0</td>
+      <td>0.50</td>
+      <td>133</td>
+      <td>66.50</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>7/13/2016</td>
+      <td>Beach</td>
+      <td>109</td>
+      <td>75</td>
+      <td>77</td>
+      <td>99.0</td>
+      <td>0.25</td>
+      <td>184</td>
+      <td>46.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7/4/2016</td>
+      <td>Beach</td>
+      <td>134</td>
+      <td>99</td>
+      <td>76</td>
+      <td>98.0</td>
+      <td>0.25</td>
+      <td>233</td>
+      <td>58.25</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>7/15/2016</td>
+      <td>Beach</td>
+      <td>98</td>
+      <td>62</td>
+      <td>75</td>
+      <td>108.0</td>
+      <td>0.50</td>
+      <td>160</td>
+      <td>80.00</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>7/16/2016</td>
+      <td>Beach</td>
+      <td>81</td>
+      <td>50</td>
+      <td>74</td>
+      <td>90.0</td>
+      <td>0.50</td>
+      <td>131</td>
+      <td>65.50</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7/2/2016</td>
+      <td>Park</td>
+      <td>98</td>
+      <td>67</td>
+      <td>72</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>165</td>
+      <td>41.25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7/3/2016</td>
+      <td>Park</td>
+      <td>110</td>
+      <td>77</td>
+      <td>71</td>
+      <td>104.0</td>
+      <td>0.25</td>
+      <td>187</td>
+      <td>46.75</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>7/20/2016</td>
+      <td>Park</td>
+      <td>71</td>
+      <td>42</td>
+      <td>70</td>
+      <td>104.0</td>
+      <td>0.50</td>
+      <td>113</td>
+      <td>56.50</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>7/1/2016</td>
+      <td>Park</td>
+      <td>97</td>
+      <td>67</td>
+      <td>70</td>
+      <td>90.0</td>
+      <td>0.25</td>
+      <td>164</td>
+      <td>41.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Pandas</p><p><a href="https://kimgoden.github.io/2021/11/02/Pandas/">https://kimgoden.github.io/2021/11/02/Pandas/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>John Doe</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-11-02</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2021-11-02</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/" alt="Alipay"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="/" alt="Wechat"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/11/02/Python01/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Python01</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/11/02/numpy/"><span class="level-item">numpy</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-02T08:37:10.000Z">2021-11-02</time></p><p class="title"><a href="/2021/11/02/Colab-github/">Colab-github</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-02T08:35:53.000Z">2021-11-02</time></p><p class="title"><a href="/2021/11/02/Statistics-Capter03/">Statistics-Capter03</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-02T08:35:42.000Z">2021-11-02</time></p><p class="title"><a href="/2021/11/02/Statistics-Capter02/">Statistics-Capter02</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-02T08:35:30.000Z">2021-11-02</time></p><p class="title"><a href="/2021/11/02/Statistics-Capter01/">Statistics-Capter01</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-02T08:35:04.000Z">2021-11-02</time></p><p class="title"><a href="/2021/11/02/Python01/">Python01</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">November 2021</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="godenblog" height="28"></a><p class="is-size-7"><span>&copy; 2021 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
