@@ -18,17 +18,16 @@
 <li>필자의 경우 처음 Settings을 들어갔을때 internet 란이 없었다. </li>
 <li>그 경우 Settings 하단 인증 부분에 들어가 휴대전화 문자 인증 후, internet 설정이 가능 했다.</li>
 </ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-05T07:29:07.000Z" title="2021. 11. 5. 오후 4:29:07">2021-11-05</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-07T11:44:41.418Z" title="2021. 11. 7. 오후 8:44:41">2021-11-07</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%BA%90%EA%B8%80/">캐글</a><span> / </span><a class="link-muted" href="/categories/%EC%BA%90%EA%B8%80/%EC%BA%90%EA%B8%80-%EC%98%88%EC%A0%9C/">캐글 예제</a></span><span class="level-item">7 minutes read (About 983 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/05/plotlyex01/">plotly 작성 연습 1</a></h1><div class="content"><h1 id="plotly-작성-연습-1"><a href="#plotly-작성-연습-1" class="headerlink" title="plotly 작성 연습 1"></a>plotly 작성 연습 1</h1><h3 id="kaggle-에서-데이터셋을-불러와-히스토그램-그래프-작성"><a href="#kaggle-에서-데이터셋을-불러와-히스토그램-그래프-작성" class="headerlink" title="- kaggle 에서 데이터셋을 불러와 히스토그램 그래프 작성"></a>- kaggle 에서 데이터셋을 불러와 히스토그램 그래프 작성</h3><ol>
-<li><p><code>pandas</code>, <code>numpy</code> 임포트 및 시각화를 위한 함수 세팅<br><img src="/images/plotly/plotlyinput.png"></p>
-</li>
-<li><p>데이터프레임 셋팅</p>
-</li>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-05T07:29:07.000Z" title="2021. 11. 5. 오후 4:29:07">2021-11-05</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-07T11:47:15.718Z" title="2021. 11. 7. 오후 8:47:15">2021-11-07</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%BA%90%EA%B8%80/">캐글</a><span> / </span><a class="link-muted" href="/categories/%EC%BA%90%EA%B8%80/%EC%BA%90%EA%B8%80-%EC%98%88%EC%A0%9C/">캐글 예제</a></span><span class="level-item">7 minutes read (About 983 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/05/plotlyex01/">plotly 작성 연습 1</a></h1><div class="content"><h1 id="plotly-작성-연습-1"><a href="#plotly-작성-연습-1" class="headerlink" title="plotly 작성 연습 1"></a>plotly 작성 연습 1</h1><h3 id="kaggle-에서-데이터셋을-불러와-히스토그램-그래프-작성"><a href="#kaggle-에서-데이터셋을-불러와-히스토그램-그래프-작성" class="headerlink" title="- kaggle 에서 데이터셋을 불러와 히스토그램 그래프 작성"></a>- kaggle 에서 데이터셋을 불러와 히스토그램 그래프 작성</h3><p><img src="/images/plotly/plotlyinput.png"></p>
+<ol>
+<li><code>pandas</code>, <code>numpy</code> 임포트 및 시각화를 위한 함수 세팅</li>
 </ol>
+<p><img src="/images/plotly/plotlyread.png"><br>2. 데이터프레임 셋팅</p>
 <ul>
 <li><code>pd.read.csv()</code>함수는 <code>pandas</code> 라이브러리에서 제공하는 함수<br>외부 text파일, csv파일을 불러올 수 있게 해준다.</li>
 <li><code>low_memory=False</code> 는 컬럼에 <code>Nan</code> 값이 여러 타입의 데이터가 섞여있을 경우 오류 발생 예방</li>
 </ul>
-<p><img src="/images/plotly/plotlyread.png"></p>
+<p><img src="/images/plotly/plotly_histogram.png"></p>
 <ol start="3">
 <li>직군별 남녀 비율을 표현한 히스토그램 작성</li>
 </ol>
@@ -74,7 +73,6 @@
 </ul>
 </li>
 </ul>
-<p><img src="/images/plotly/plotly_histogram.png"></p>
 <ol start="4">
 <li>히스토그램 출력 결과<br><img src="/images/plotly/plotly_histogram2.png"></li>
 </ol>
