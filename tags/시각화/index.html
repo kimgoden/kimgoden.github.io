@@ -66,49 +66,42 @@
 <li>그 경우 Settings 하단 인증 부분에 들어가 휴대전화 문자 인증 후, internet 설정이 가능 했다.</li>
 </ul>
 <p>출처: <a target="_blank" rel="noopener" href="https://somjang.tistory.com/entry/Kaggle-Notebook-%EC%97%90%EC%84%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95">https://somjang.tistory.com/entry/Kaggle-Notebook-에서-라이브러리-설치-방법</a> [솜씨좋은장씨]</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-05T07:29:07.000Z" title="2021. 11. 5. 오후 4:29:07">2021-11-05</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-07T11:47:15.718Z" title="2021. 11. 7. 오후 8:47:15">2021-11-07</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%BA%90%EA%B8%80/">캐글</a><span> / </span><a class="link-muted" href="/categories/%EC%BA%90%EA%B8%80/%EC%BA%90%EA%B8%80-%EC%98%88%EC%A0%9C/">캐글 예제</a></span><span class="level-item">7 minutes read (About 983 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/05/plotlyex01/">plotly 작성 연습 1</a></h1><div class="content"><h1 id="plotly-작성-연습-1"><a href="#plotly-작성-연습-1" class="headerlink" title="plotly 작성 연습 1"></a>plotly 작성 연습 1</h1><h3 id="kaggle-에서-데이터셋을-불러와-히스토그램-그래프-작성"><a href="#kaggle-에서-데이터셋을-불러와-히스토그램-그래프-작성" class="headerlink" title="- kaggle 에서 데이터셋을 불러와 히스토그램 그래프 작성"></a>- kaggle 에서 데이터셋을 불러와 히스토그램 그래프 작성</h3><p><img src="/images/plotly/plotlyinput.png"></p>
-<ol>
-<li><code>pandas</code>, <code>numpy</code> 임포트 및 시각화를 위한 함수 세팅</li>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-05T07:29:07.000Z" title="2021. 11. 5. 오후 4:29:07">2021-11-05</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-11-08T01:43:16.874Z" title="2021. 11. 8. 오전 10:43:16">2021-11-08</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%BA%90%EA%B8%80/">캐글</a><span> / </span><a class="link-muted" href="/categories/%EC%BA%90%EA%B8%80/%EC%BA%90%EA%B8%80-%EC%98%88%EC%A0%9C/">캐글 예제</a></span><span class="level-item">8 minutes read (About 1174 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/05/plotlyex01/">plotly 작성 연습 1</a></h1><div class="content"><h1 id="plotly-작성-연습-1"><a href="#plotly-작성-연습-1" class="headerlink" title="plotly 작성 연습 1"></a>plotly 작성 연습 1</h1><h3 id="kaggle-에서-데이터셋을-불러와-히스토그램-그래프-작성"><a href="#kaggle-에서-데이터셋을-불러와-히스토그램-그래프-작성" class="headerlink" title="- kaggle 에서 데이터셋을 불러와 히스토그램 그래프 작성"></a>- kaggle 에서 데이터셋을 불러와 히스토그램 그래프 작성</h3><ol>
+<li><code>pandas</code>, <code>numpy</code> 임포트 및 시각화를 위한 함수 세팅<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> plotly.express <span class="keyword">as</span> px <span class="comment">#plotly 시각화 툴 임포트</span></span><br><span class="line"><span class="keyword">from</span> plotly.subplots <span class="keyword">import</span> make_subplots  <span class="comment"># 여러개의 그래프 표현 함수</span></span><br><span class="line"><span class="keyword">import</span> plotly.figure_factory <span class="keyword">as</span> ff <span class="comment">#특정한 그래프를 그리기 위한 함수</span></span><br><span class="line"><span class="keyword">import</span> plotly.graph_objs <span class="keyword">as</span> go</span><br></pre></td></tr></table></figure></li>
+<li>데이터프레임 셋팅</li>
 </ol>
-<p><img src="/images/plotly/plotlyread.png"><br>2. 데이터프레임 셋팅</p>
 <ul>
-<li><code>pd.read.csv()</code>함수는 <code>pandas</code> 라이브러리에서 제공하는 함수<br>외부 text파일, csv파일을 불러올 수 있게 해준다.</li>
-<li><code>low_memory=False</code> 는 컬럼에 <code>Nan</code> 값이 여러 타입의 데이터가 섞여있을 경우 오류 발생 예방</li>
+<li><code>pd.read_csv()</code>함수는 <code>pandas</code> 라이브러리에서 제공하는 함수<br>외부 text파일, csv파일을 불러올 수 있게 해준다.</li>
+<li><code>low_memory=False</code> 는 컬럼에 <code>Nan</code> 값이 여러 타입의 데이터가 섞여있을 경우 오류 발생 예방<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">&#x27;../input/kaggle-survey-2021/kaggle_survey_2021_responses.csv&#x27;</span>,low_memory=<span class="literal">False</span>)</span><br><span class="line">questions = df.iloc[<span class="number">0</span>, :].T</span><br><span class="line">df = df.iloc[<span class="number">1</span>:, :]</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p><img src="/images/plotly/plotly_histogram.png"></p>
 <ol start="3">
 <li>직군별 남녀 비율을 표현한 히스토그램 작성</li>
 </ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;Q2&#x27;</span>] = df[<span class="string">&#x27;Q2&#x27;</span>].apply(<span class="keyword">lambda</span> x : <span class="string">&#x27;ETC&#x27;</span> <span class="keyword">if</span> x <span class="keyword">not</span> <span class="keyword">in</span> [<span class="string">&#x27;Man&#x27;</span>, <span class="string">&#x27;Woman&#x27;</span>] <span class="keyword">else</span> x)</span><br></pre></td></tr></table></figure>
+<p>데이터프레임에 <code>Q2</code> 문항에서 Man, Woman이 아닌 값을 ETC에 반환해주는 코드</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = df[df[<span class="string">&#x27;Q2&#x27;</span>]!=<span class="string">&#x27;ETC&#x27;</span>][[<span class="string">&#x27;Q5&#x27;</span>,<span class="string">&#x27;Q2&#x27;</span>]]</span><br></pre></td></tr></table></figure>
+<p>히스토그램의 X값을 지정해주는 코드</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fig = px.histogram(x, y=<span class="string">&#x27;Q5&#x27;</span>, color=<span class="string">&#x27;Q2&#x27;</span>, title=<span class="string">&#x27;Current position: Gender&#x27;</span>, histnorm=<span class="string">&#x27;percent&#x27;</span>,</span><br><span class="line">                  color_discrete_sequence=[<span class="string">&#x27;#496595&#x27;</span>,<span class="string">&#x27;#f36196&#x27;</span>],</span><br><span class="line">                  labels=<span class="built_in">dict</span>(Q2=<span class="string">&quot;Gender&quot;</span>))</span><br></pre></td></tr></table></figure>
+<p><code>fig()</code> 문</p>
 <ul>
-<li>1번 줄 : 데이터프레임에 <code>Q2</code> 문항에서 Man, Woman이 아닌 값을 ETC에 반환해주는 코드</li>
-<li>2번 줄 : 히스토그램의 X값을 지정해주는 코드</li>
-<li>3번 줄 : <code>fig()</code> 문<ul>
 <li><code>px.histogram</code>문을 통해 히스토그램식으로 설정</li>
 <li>미리 설정한 x값을 x축에, y축은 <code>Q5</code>의 데이터항목으로 설정</li>
 <li>그래프의 제목(<code>title=&#39;Current position: Gender</code>)</li>
 <li>히스토그램에서 각 항목들이 전체 퍼센트 수치로 표현(<code>histnorm=&#39;percent&#39;</code>)</li>
 <li>막대 색상의 값을 각각 다르게 지정(<code>color_discrete_sequence=[&#39;#496595&#39;,&#39;#f36196&#39;]</code>)</li>
-<li>x축의 값이 된 Q2의 변수 두개를 표현(<code>labels=dict(Q2=&quot;Gender&quot;))</code>)</li>
-</ul>
-</li>
-<li>4번 줄 : 히스토그램의 마커에 대한 설정<ul>
+<li>x축의 값이 된 Q2의 변수 두개를 표현(<code>labels=dict(Q2=&quot;Gender&quot;))</code>)<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fig.update_traces(hovertemplate=<span class="literal">None</span>, marker=<span class="built_in">dict</span>(line=<span class="built_in">dict</span>(width=<span class="number">0</span>)))</span><br></pre></td></tr></table></figure>
+히스토그램의 마커에 대한 설정</li>
 <li>마커 설정을 위한 함수(<code>fig.update_traces()</code>)</li>
 <li>히스토그램 그래프에 마우스를 올릴 경우 나오는 <code>hover</code> 값을 설정해 주지 않음으로 기본적 값만 나오게 한다(<code>hovertemplate=None</code>)</li>
-<li>마커의 태두리 두깨를 설정해 준다(<code>marker=dict(line=dict(width=0)))</code>)</li>
-</ul>
-</li>
-<li>5번 줄 : 히스토그램 y축에 대한 설정<ul>
+<li>마커의 태두리 두깨를 설정해 준다(<code>marker=dict(line=dict(width=0)))</code>)<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fig.update_yaxes(showgrid=<span class="literal">False</span>, ticksuffix=<span class="string">&#x27; &#x27;</span>, categoryorder=<span class="string">&#x27;total ascending&#x27;</span>)</span><br></pre></td></tr></table></figure>
+히스토그램 y축에 대한 설정</li>
 <li>y축 설정을 위한 함수(<code>fig.update_yaxes()</code>)</li>
 <li>그래프 상 y축 좌표를 보이지 않게 한다(<code>showgrid=False</code>)</li>
 <li>y축 변수명 옆 추가 설명란, (<code>ticksuffix= </code>) 코드상 여백이 들어가 있다. </li>
-<li>y축 정렬을 가장 많은 값 부터 내림차순으로 설정(<code>categoryorder=&#39;total ascending&#39;</code>)</li>
-</ul>
-</li>
-<li>6번 줄 : 히스토그램 x축에 대한 설정<ul>
-<li>그래프 상 x축 좌표를 보이지 않게 한다.(<code>fig.update_xaxes(visible=False)</code>)</li>
-</ul>
-</li>
-<li>7번 줄 : 그래프 표현에 대한 설정<ul>
+<li>y축 정렬을 가장 많은 값 부터 내림차순으로 설정(<code>categoryorder=&#39;total ascending&#39;</code>)<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fig.update_xaxes(visible=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+히스토그램 x축에 대한 설정</li>
+<li>그래프 상 x축 좌표를 보이지 않게 한다.(<code>fig.update_xaxes(visible=False)</code>)<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fig.update_layout(height=<span class="number">1000</span>, bargap=<span class="number">0.2</span>, </span><br><span class="line">                  plot_bgcolor=<span class="string">&#x27;#fff&#x27;</span>, paper_bgcolor=<span class="string">&#x27;#fff&#x27;</span>,</span><br><span class="line">                  margin=<span class="built_in">dict</span>(b=<span class="number">0</span>,r=<span class="number">20</span>,l=<span class="number">20</span>), </span><br><span class="line">                  title_font=<span class="built_in">dict</span>(size=<span class="number">25</span>, color=<span class="string">&#x27;#333&#x27;</span>, family=<span class="string">&quot;Lato, sans-serif&quot;</span>),</span><br><span class="line">                  font=<span class="built_in">dict</span>(color=<span class="string">&#x27;#8a8d93&#x27;</span>), yaxis_title=<span class="string">&quot; &quot;</span>, hovermode=<span class="string">&#x27;y unified&#x27;</span>,</span><br><span class="line">                  hoverlabel=<span class="built_in">dict</span>(bgcolor=<span class="string">&quot;#333&quot;</span>, font_size=<span class="number">13</span>, font_family=<span class="string">&quot;Lato, sans-serif&quot;</span>),</span><br><span class="line">                  legend=<span class="built_in">dict</span>(orientation=<span class="string">&quot;h&quot;</span>, yanchor=<span class="string">&quot;bottom&quot;</span>, y=<span class="number">1</span>, xanchor=<span class="string">&quot;center&quot;</span>, x=<span class="number">0.5</span>))</span><br></pre></td></tr></table></figure>
+그래프 표현에 대한 설정</li>
 <li>위에 각 변수에 저장된 그래프들을 한번에 불러와 출력한다.<br>(<code>fig.update_layout</code>)</br></li>
 <li><code>height=1000,</code> = 표 크기 / <code>bargap=0.2,</code> = 바 간격</li>
 <li>x축과 y축 사이의 플로팅 영역의 배경색을 설정한다<br>(<code>plot_bgcolor</code>)</br></li>
@@ -118,8 +111,6 @@
 <li>그래프의 전반적인 폰트의 색상과 여백, 그리고 <code>hover</code> 타이틀이 될 변수를 설정해준다.<br>(<code>font=dict(color=&#39;#8a8d93&#39;), yaxis_title=&quot; &quot;, hovermode=&#39;y unified&#39;,</code>)</br></li>
 <li><code>hover</code> 의 폰트에 대한 설정 <br>(<code>hoverlabel=dict(bgcolor=&quot;#333&quot;, font_size=13, font_family=&quot;Lato, sans-serif&quot;),</code>)</br></li>
 <li>범례에 대한 설정 <br>(<code>legend=dict(orientation=&quot;h&quot;, yanchor=&quot;bottom&quot;, y=1, xanchor=&quot;right&quot;, x=0.5))</code>)</br></li>
-</ul>
-</li>
 </ul>
 <ol start="4">
 <li>히스토그램 출력 결과<br><img src="/images/plotly/plotly_histogram2.png"></li>
